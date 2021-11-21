@@ -150,20 +150,20 @@ public class utilityHelper {
         }
     }
 
-    public static boolean checkDiem(JTextField txt) {
+    public static boolean checkDonGia(JTextField txt) {
 
         try {
             float hp = Float.parseFloat(txt.getText());
-            if ((hp >= 0 && hp <= 10) || hp == -1) {
+            if ((hp >= 0 && hp <= 10000000) ) {
                 return true;
             } else {
 
-                DialogHelper.alert(txt.getRootPane(), " Phải trong khoảng 0-10 hoặc chưa nhập (-1)!");
+                DialogHelper.alert(txt.getRootPane(), "Đơn Giá Phải >0");
                 return false;
             }
         } catch (NumberFormatException e) {
 
-            DialogHelper.alert(txt.getRootPane(), " Phải là số thực!");
+            DialogHelper.alert(txt.getRootPane(), "Đơn Giá Phải là số thực!");
             return false;
         }
     }

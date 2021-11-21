@@ -13,93 +13,83 @@ import java.util.Date;
  */
 public class DichVu {
     
-    private String MaKhoaHoc;
-    private String TenKhoaHoc;
-    private boolean GioiTinh;
-    private float GiaThanh;
-    private Date ThoiGianBatDau;
-    private Date ThoiGianKetThuc;
-    private String HuongDanVien;
-    private String GhiChu;
+    private String MaDV;
+    private String TenDV;
+    private float DonGia;
+    private String MoTa;
+    private String MaNV;
+    private boolean TinhTrang;
 
-    public String getMaKhoaHoc() {
-        return MaKhoaHoc;
+    public DichVu(String MaDV, String TenDV, float DonGia, String MoTa, String MaNV, boolean TinhTrang) {
+        this.MaDV = MaDV;
+        this.TenDV = TenDV;
+        this.DonGia = DonGia;
+        this.MoTa = MoTa;
+        this.MaNV = MaNV;
+        this.TinhTrang = TinhTrang;
     }
 
-    public void setMaKhoaHoc(String MaKhoaHoc) {
-        this.MaKhoaHoc = MaKhoaHoc;
+    public String getMaDV() {
+        return MaDV;
     }
 
-    public String getTenKhoaHoc() {
-        return TenKhoaHoc;
+    public void setMaDV(String MaDV) {
+        this.MaDV = MaDV;
     }
 
-    public void setTenKhoaHoc(String TenKhoaHoc) {
-        this.TenKhoaHoc = TenKhoaHoc;
+    public String getTenDV() {
+        return TenDV;
     }
 
-    public boolean isGioiTinh() {
-        return GioiTinh;
+    public void setTenDV(String TenDV) {
+        this.TenDV = TenDV;
     }
 
-    public void setGioiTinh(boolean GioiTinh) {
-        this.GioiTinh = GioiTinh;
+    public float getDonGia() {
+        return DonGia;
     }
 
-    public float getGiaThanh() {
-        return GiaThanh;
+    public void setDonGia(float DonGia) {
+        this.DonGia = DonGia;
     }
 
-    public void setGiaThanh(float GiaThanh) {
-        this.GiaThanh = GiaThanh;
+    public String getMoTa() {
+        return MoTa;
     }
 
-    public Date getThoiGianBatDau() {
-        return ThoiGianBatDau;
+    public void setMoTa(String MoTa) {
+        this.MoTa = MoTa;
     }
 
-    public void setThoiGianBatDau(Date ThoiGianBatDau) {
-        this.ThoiGianBatDau = ThoiGianBatDau;
+    public String getMaNV() {
+        return MaNV;
     }
 
-    public Date getThoiGianKetThuc() {
-        return ThoiGianKetThuc;
+    public void setMaNV(String MaNV) {
+        this.MaNV = MaNV;
     }
 
-    public void setThoiGianKetThuc(Date ThoiGianKetThuc) {
-        this.ThoiGianKetThuc = ThoiGianKetThuc;
+    public boolean isTinhTrang() {
+        return TinhTrang;
     }
 
-    public String getHuongDanVien() {
-        return HuongDanVien;
+    public void setTinhTrang(boolean TinhTrang) {
+        this.TinhTrang = TinhTrang;
     }
 
-    public void setHuongDanVien(String HuongDanVien) {
-        this.HuongDanVien = HuongDanVien;
-    }
+    
 
-    public String getGhiChu() {
-        return GhiChu;
+    public DichVu() {
     }
+    
 
-    public void setGhiChu(String GhiChu) {
-        this.GhiChu = GhiChu;
-    }
-
-    public DichVu(String MaKhoaHoc, String TenKhoaHoc, boolean GioiTinh, float GiaThanh, Date ThoiGianBatDau, Date ThoiGianKetThuc, String HuongDanVien, String GhiChu) {
-        this.MaKhoaHoc = MaKhoaHoc;
-        this.TenKhoaHoc = TenKhoaHoc;
-        this.GioiTinh = GioiTinh;
-        this.GiaThanh = GiaThanh;
-        this.ThoiGianBatDau = ThoiGianBatDau;
-        this.ThoiGianKetThuc = ThoiGianKetThuc;
-        this.HuongDanVien = HuongDanVien;
-        this.GhiChu = GhiChu;
-    }
+    
 
     @Override
     public String toString() {
-        return "DichVu{" + "MaKhoaHoc=" + MaKhoaHoc + ", TenKhoaHoc=" + TenKhoaHoc + ", GioiTinh=" + GioiTinh + ", GiaThanh=" + GiaThanh + ", ThoiGianBatDau=" + ThoiGianBatDau + ", ThoiGianKetThuc=" + ThoiGianKetThuc + ", HuongDanVien=" + HuongDanVien + ", GhiChu=" + GhiChu + '}';
+        return this.TenDV;
+        
     }
     
+   
 }
