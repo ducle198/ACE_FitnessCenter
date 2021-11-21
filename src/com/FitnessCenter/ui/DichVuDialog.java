@@ -148,6 +148,11 @@ public class DichVuDialog extends javax.swing.JDialog {
         });
 
         btnDong.setText("Đóng");
+        btnDong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDongActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 51));
@@ -383,6 +388,10 @@ public class DichVuDialog extends javax.swing.JDialog {
             load();
         }
     }//GEN-LAST:event_txtTimKiemActionPerformed
+
+    private void btnDongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnDongActionPerformed
 
     /**
      * @param args the command line arguments
