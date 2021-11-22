@@ -5,6 +5,8 @@
  */
 package com.FitnessCenter.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author ADMIN
@@ -13,9 +15,14 @@ public class NhanVien {
     String maNV;
     String matKhau;
     String hoTen;
-    String chucVu;
+    boolean gioiTinh;
+    Date ngaySinh;
     String phoneNumber;
+    String diaChi;
     boolean vaiTro;
+    String chucVu;
+    
+    
 
     public String getMaNV() {
         return maNV;
@@ -63,6 +70,29 @@ public class NhanVien {
 
     public void setVaiTro(boolean vaiTro) {
         this.vaiTro = vaiTro;
+    }
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
     
 }

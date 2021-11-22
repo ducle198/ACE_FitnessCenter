@@ -5,6 +5,11 @@
  */
 package com.FitnessCenter.ui;
 
+import com.FitnessCenter.dao.dao;
+import com.FitnessCenter.utils.Auth;
+import static com.FitnessCenter.utils.Auth.clear;
+import com.FitnessCenter.utils.MsgBox;
+
 /**
  *
  * @author ADMIN
@@ -17,6 +22,34 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    void celar(){
+        txtTenDangNhap.setText("");
+        txtMatKhau.setText("");
+        txtMatKhauMoi.setText("");
+        txtMatKhauMoi2.setText("");
+    }
+    private void doiMK(){
+        String manv = txtTenDangNhap.getText();
+        String matkhau = new String(txtMatKhau.getPassword());
+        String matkhauMoi = new String(txtMatKhauMoi.getPassword());
+        String matkhauMoi2 = new String(txtMatKhauMoi2.getPassword());
+        
+        if(!manv.equalsIgnoreCase(Auth.user.getMaNV())){
+            MsgBox.alert(this, "Sai tên đăng nhập!");
+        }else if(!matkhau.equals(Auth.user.getMatKhau())){
+            MsgBox.alert(this, "Sai mật khẩu!");
+        }else if(matkhau.equals(matkhauMoi)){
+            MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu hiện tại!");
+        }else if(!matkhauMoi.equals(matkhauMoi2)){
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+        }else{
+            Auth.user.setMatKhau(matkhauMoi);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công!");
+            clear();
+        }
     }
 
     /**
@@ -28,21 +61,123 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnDoiMK = new javax.swing.JButton();
+        btnHuy = new javax.swing.JButton();
+        txtMatKhauMoi2 = new javax.swing.JPasswordField();
+        txtTenDangNhap = new javax.swing.JPasswordField();
+        txtMatKhau = new javax.swing.JPasswordField();
+        txtMatKhauMoi = new javax.swing.JPasswordField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("Tên đăng nhập:");
+
+        jLabel2.setText("Mật khẩu cũ:");
+
+        jLabel3.setText("Mật khẩu mới:");
+
+        jLabel4.setText("Xác nhận mật khẩu:");
+
+        btnDoiMK.setBackground(new java.awt.Color(204, 204, 255));
+        btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMKActionPerformed(evt);
+            }
+        });
+
+        btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDoiMK)
+                .addGap(32, 32, 32)
+                .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMatKhauMoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 126, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMatKhauMoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
+        // TODO add your handling code here:
+        if(txtTenDangNhap.getText().length() == 0){
+            MsgBox.alert(this, "Không được để trống Tên Đăng Nhập!");
+        }else if(txtMatKhau.getText().length() == 0){
+            MsgBox.alert(this, "Không được để trống Mật Khẩu!");
+        }else if(txtMatKhauMoi.getText().length() == 0){
+            MsgBox.alert(this, "Bạn phải nhập Mật Khẩu Mới!");
+        }else if(txtMatKhauMoi2.getText().length() == 0){
+            MsgBox.alert(this, "Bạn phải xác nhận mật khẩu!");
+        }else{
+            doiMK();
+        }
+    }//GEN-LAST:event_btnDoiMKActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnHuyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +222,15 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDoiMK;
+    private javax.swing.JButton btnHuy;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField txtMatKhau;
+    private javax.swing.JPasswordField txtMatKhauMoi;
+    private javax.swing.JPasswordField txtMatKhauMoi2;
+    private javax.swing.JPasswordField txtTenDangNhap;
     // End of variables declaration//GEN-END:variables
 }
