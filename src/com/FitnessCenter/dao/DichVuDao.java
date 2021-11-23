@@ -63,7 +63,7 @@ public class DichVuDao {
         return list.size() > 0 ? list.get(0) : null;
     }
 
-    private List<DichVu> select(String sql, Object... args) {
+        private List<DichVu> select(String sql, Object... args) {
         List<DichVu> list = new ArrayList<>();
         try {
             ResultSet rs = null;
