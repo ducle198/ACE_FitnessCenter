@@ -19,25 +19,30 @@ import java.util.List;
 public class DichVuDao {
 
     public void insert(DichVu model) {
-        String sql = "INSERT INTO DichVu (MaDV, TenDV, DONGIA, MoTa, Manv, TinhTrang) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DichVu (MaDV, TenDV, GiaDV, Maca, NgayBD, NgayKT, TrangThai, Mota) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
                 model.getMaDV(),
                 model.getTenDV(),
-                model.getDonGia(),
-                model.getMoTa(),
-                model.getMaNV(),
-                model.isTinhTrang()
+                model.getGiaDV(),
+                model.getMaCa(),
+                model.getNgayBD(),
+                model.getNgayKT(),
+                model.isTrangThai(),
+                model.getMota()
         );
     }
 
     public void Update(DichVu dichvu) {
-        String sql = "UPDATE DichVu SET TenDV=?, DONGIA=?, Mota=?, Manv=?, TinhTrang=? WHERE MaDV=?";
+        String sql = "UPDATE DichVu SET TenDV=?, GiaDV=?, Maca=?, NgayBd=?, NgayKT=?, TrangThai=?, mota=? WHERE MaDV=?";
         JdbcHelper.executeUpdate(sql,              
+                
                 dichvu.getTenDV(),
-                dichvu.getDonGia(),
-                dichvu.getMoTa(),
-                dichvu.getMaNV(),
-                dichvu.isTinhTrang(),
+                dichvu.getGiaDV(),
+                dichvu.getMaCa(),
+                dichvu.getNgayBD(),
+                dichvu.getNgayKT(),
+                dichvu.isTrangThai(),
+                dichvu.getMota(),
                 dichvu.getMaDV()
         );
     }
@@ -86,10 +91,12 @@ public class DichVuDao {
         DichVu dichvu = new DichVu();
         dichvu.setMaDV(rs.getString("MaDV"));
         dichvu.setTenDV(rs.getString("TenDV"));
-        dichvu.setDonGia(rs.getFloat("DonGia"));
-        dichvu.setMoTa(rs.getString("MoTa"));
-        dichvu.setMaNV(rs.getString("MaNv"));
-        dichvu.setTinhTrang(rs.getBoolean("TinhTrang"));
+        dichvu.setGiaDV(rs.getFloat("GiaDV"));
+        dichvu.setMaCa(rs.getString("MaCa"));
+        dichvu.setNgayBD(rs.getDate("NgayBd"));
+        dichvu.setNgayKT(rs.getDate("NgayKT"));
+        dichvu.setTrangThai(rs.getBoolean("TrangThai"));
+        dichvu.setMota(rs.getString("Mota"));
         
         return dichvu;
     }

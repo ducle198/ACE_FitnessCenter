@@ -7,6 +7,10 @@ package com.FitnessCenter.entity;
 
 import java.util.Date;
 
+
+
+
+
 /**
  *
  * @author ADMIN
@@ -15,19 +19,12 @@ public class DichVu {
     
     private String MaDV;
     private String TenDV;
-    private float DonGia;
-    private String MoTa;
-    private String MaNV;
-    private boolean TinhTrang;
-
-    public DichVu(String MaDV, String TenDV, float DonGia, String MoTa, String MaNV, boolean TinhTrang) {
-        this.MaDV = MaDV;
-        this.TenDV = TenDV;
-        this.DonGia = DonGia;
-        this.MoTa = MoTa;
-        this.MaNV = MaNV;
-        this.TinhTrang = TinhTrang;
-    }
+    private float GiaDV;
+    private String MaCa; 
+    private Date NgayBD;
+    private Date NgayKT;
+    private boolean TrangThai;
+    private String Mota;
 
     public String getMaDV() {
         return MaDV;
@@ -45,39 +42,64 @@ public class DichVu {
         this.TenDV = TenDV;
     }
 
-    public float getDonGia() {
-        return DonGia;
+    public float getGiaDV() {
+        return GiaDV;
     }
 
-    public void setDonGia(float DonGia) {
-        this.DonGia = DonGia;
+    public void setGiaDV(float GiaDV) {
+        this.GiaDV = GiaDV;
     }
 
-    public String getMoTa() {
-        return MoTa;
+    public String getMaCa() {
+        return MaCa;
     }
 
-    public void setMoTa(String MoTa) {
-        this.MoTa = MoTa;
+    public void setMaCa(String MaCa) {
+        this.MaCa = MaCa;
     }
 
-    public String getMaNV() {
-        return MaNV;
+    public Date getNgayBD() {
+        return NgayBD;
     }
 
-    public void setMaNV(String MaNV) {
-        this.MaNV = MaNV;
+    public void setNgayBD(Date NgayBD) {
+        this.NgayBD = NgayBD;
     }
 
-    public boolean isTinhTrang() {
-        return TinhTrang;
+    public Date getNgayKT() {
+        return NgayKT;
     }
 
-    public void setTinhTrang(boolean TinhTrang) {
-        this.TinhTrang = TinhTrang;
+    public void setNgayKT(Date NgayKT) {
+        this.NgayKT = NgayKT;
     }
 
-    
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
+    public String getMota() {
+        return Mota;
+    }
+
+    public void setMota(String Mota) {
+        this.Mota = Mota;
+    }
+
+    public DichVu(String MaDV, String TenDV, float GiaDV, String MaCa, Date NgayBD, Date NgayKT, boolean TrangThai, String Mota) {
+        this.MaDV = MaDV;
+        this.TenDV = TenDV;
+        this.GiaDV = GiaDV;
+        this.MaCa = MaCa;
+        this.NgayBD = NgayBD;
+        this.NgayKT = NgayKT;
+        this.TrangThai = TrangThai;
+        this.Mota = Mota;
+    }
 
     public DichVu() {
     }
