@@ -5,6 +5,8 @@
  */
 package com.FitnessCenter.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author ADMIN
@@ -12,10 +14,18 @@ package com.FitnessCenter.entity;
 public class NhanVien {
     String maNV;
     String matKhau;
-    String hoTen;
-    String chucVu;
+    String tenNV;
+    boolean gioiTinh;
+    String idCard;
+    Date ngaySinh;
+    String diaChi;
     String phoneNumber;
-    boolean vaiTro;
+    String email;
+    String chucVu;
+    float kinhNghiem;
+    String hinhAnh;
+    boolean trangThai;
+
 
     public String getMaNV() {
         return maNV;
@@ -33,20 +43,44 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getTenNV() {
+        return tenNV;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setTenNV(String tenNV) {
+        this.tenNV = tenNV;
     }
 
-    public String getChucVu() {
-        return chucVu;
+    public boolean isGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public String getPhoneNumber() {
@@ -57,15 +91,52 @@ public class NhanVien {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isVaiTro() {
-        return vaiTro;
+    public String getEmail() {
+        return email;
     }
 
-    public void setVaiTro(boolean vaiTro) {
-        this.vaiTro = vaiTro;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public String getChucVu() {
+        return chucVu;
+    }
+
+    public void setChucVu(String chucVu) {
+        this.chucVu = chucVu;
+    }
+
+    public float getKinhNghiem() {
+        return kinhNghiem;
+    }
+
+    public void setKinhNghiem(float kinhNghiem) {
+        this.kinhNghiem = kinhNghiem;
+    }
+
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
     @Override
     public String toString() {
-        return "NhanVien{" + "maNV=" + maNV + ", matKhau=" + matKhau + ", hoTen=" + hoTen + ", vaiTro=" + vaiTro + '}';
+        return "NhanVien{" + "maNV=" + maNV + ", matKhau=" + matKhau + ", tenNV=" + tenNV + ", gioiTinh=" + gioiTinh + ", idCard=" + idCard + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", phoneNumber=" + phoneNumber + ", email=" + email + ", chucVu=" + chucVu + ", kinhNghiem=" + kinhNghiem + ", hinhAnh=" + hinhAnh + ", trangThai=" + trangThai + '}';
     }
+    
+    
+    
 }
