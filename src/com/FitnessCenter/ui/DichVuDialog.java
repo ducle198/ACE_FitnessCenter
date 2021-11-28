@@ -527,6 +527,7 @@ public class DichVuDialog extends javax.swing.JDialog {
     private void btnCaTapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaTapActionPerformed
         try {
             CaTapJDiaLog formCaTap = new CaTapJDiaLog();
+                this.dispose();
             formCaTap.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -544,7 +545,7 @@ public class DichVuDialog extends javax.swing.JDialog {
             this.index = tblQLDV.rowAtPoint(evt.getPoint());
             if (this.index >= 0) {
                 this.edit();
-                tabs.setSelectedIndex(0);
+                tabs.setSelectedIndex(1);
             }
         }
     }//GEN-LAST:event_tblQLDVMouseClicked
@@ -684,6 +685,8 @@ public class DichVuDialog extends javax.swing.JDialog {
 
     private void clear() {
         setTrang();
+        
+        this.setStatus(true);
     }
 
     public void setTrang() {
@@ -721,6 +724,7 @@ public class DichVuDialog extends javax.swing.JDialog {
         model.setNgayKT(DateHelper.toDate(txtNgayKt.getText()));
         model.setTrangThai(rdoHoatDong.isSelected());
         model.setMota(txtMota.getText());
+        model.setMaCa(String.valueOf(cboCaTap.getToolTipText()));
 
         return model;
     }
@@ -808,6 +812,15 @@ public class DichVuDialog extends javax.swing.JDialog {
         }
     }
     private void setStatus(boolean insertable) {
+        /*txtMaCD.setEditable(insertable);
+        btnInsert.setEnabled(insertable);
+        btnUpdate.setEnabled(!insertable);
+        btnDelete.setEnabled(!insertable);*/
+        txtMadv.setEditable(insertable);
+        txtTenDV.setEditable(insertable);
+        btnThem.setEnabled(insertable);
+        btnSua.setEnabled(!insertable);
+        btnXoa.setEnabled(!insertable);
         
         boolean first = this.index > 0;
         boolean last = this.index < tblQLDV.getRowCount() - 1;

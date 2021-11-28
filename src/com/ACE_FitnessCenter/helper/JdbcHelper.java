@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,4 +73,24 @@ public class JdbcHelper {
             throw new RuntimeException(e);
         }
     }
+    public static void update(String INSERT_SQL, String maKH, String tenKH, String diaChi, String soDienThoai) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void update(String INSERT_SQL, String maKH, String tenKH, boolean gioiTinh, String soCCCD, Date ngaysinh, String diaChi, String soDienThoai, String email, String ghiChu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void update(String INSERT_SQL, String maKH, String tenKH, boolean gioiTinh, String soCCCD, Date ngaysinh, String diaChi, String soDienThoai, String email, String hinhAnh, String ghiChu) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void update(String DELETE_SQL, String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static ResultSet query(String sql, Object[] args) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
