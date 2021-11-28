@@ -97,7 +97,6 @@ public class DichVuDao {
         dichvu.setNgayKT(rs.getDate("NgayKT"));
         dichvu.setTrangThai(rs.getBoolean("TrangThai"));
         dichvu.setMota(rs.getString("Mota"));
-        
         return dichvu;
     }
 }

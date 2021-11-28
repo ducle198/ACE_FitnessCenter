@@ -44,7 +44,7 @@
                       <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnDong" linkSize="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDong" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -60,7 +60,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="tabs" min="-2" pref="549" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnDong" linkSize="2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnDong" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

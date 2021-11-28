@@ -167,6 +167,74 @@ public class utilityHelper {
             return false;
         }
     }
+    public static boolean checkCanNang(JTextField txt) {
+
+        try {
+            float hp = Float.parseFloat(txt.getText());
+            if ((hp >= 0 && hp <= 200) ) {
+                return true;
+            } else {
+
+                DialogHelper.alert(txt.getRootPane(), "Cân Nặng Phải >0");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+
+            DialogHelper.alert(txt.getRootPane(), "Cân Nặng Phải là số thực!");
+            return false;
+        }
+    }
+    public static boolean checkVong1(JTextField txt) {
+
+        try {
+            float hp = Float.parseFloat(txt.getText());
+            if ((hp >= 50 && hp <= 200) ) {
+                return true;
+            } else {
+
+                DialogHelper.alert(txt.getRootPane(), "Vòng 1 Phải >50");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+
+            DialogHelper.alert(txt.getRootPane(), "Vòng 1 Phải là số thực!");
+            return false;
+        }
+    }
+    public static boolean checkVong2(JTextField txt) {
+
+        try {
+            float hp = Float.parseFloat(txt.getText());
+            if ((hp >= 20 && hp <= 200) ) {
+                return true;
+            } else {
+
+                DialogHelper.alert(txt.getRootPane(), "Vòng 2 Phải >20");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+
+            DialogHelper.alert(txt.getRootPane(), "Vòng 2 Phải là số thực!");
+            return false;
+        }
+    }
+    public static boolean checkVong3(JTextField txt) {
+
+        try {
+            float hp = Float.parseFloat(txt.getText());
+            if ((hp >= 50 && hp <= 200) ) {
+                return true;
+            } else {
+
+                DialogHelper.alert(txt.getRootPane(), "Vòng 3 Phải >50");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+
+            DialogHelper.alert(txt.getRootPane(), "Vòng 3 Phải là số thực!");
+            return false;
+        }
+    }
 
     public static boolean checkNullText(JTextField txt) {
 
@@ -175,6 +243,16 @@ public class utilityHelper {
         } else {
 
             DialogHelper.alert(txt.getRootPane(), "Không được để trống ô nhập thông tin nào!");
+            return false;
+        }
+    }
+    public static boolean checkNullAreaText(JTextArea Axt) {
+
+        if (Axt.getText().trim().length() > 0) {
+            return true;
+        } else {
+
+            DialogHelper.alert(Axt.getRootPane(), "Không được để trống ô nhập thông tin nào!");
             return false;
         }
     }
