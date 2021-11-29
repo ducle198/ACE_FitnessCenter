@@ -34,7 +34,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
             }
         }).start();
         mnChao();
-        mnDangNhap();
+        dangNhap();
     }
     public ACE_FitnessCenterJFrame() {
         initComponents();
@@ -45,16 +45,14 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         new CuaSoChao1JDialog(this, true).setVisible(true);
     }
     
-    public void mnDangNhap(){
-        for(JInternalFrame form : jDesktopPane1.getAllFrames()){
-            form.dispose();
-        }
-        new DangNhapJDialog(this, true).setVisible(true);
+    void dangNhap(){
+        DangNhapJDialog formDN = new DangNhapJDialog(this, true);
+        formDN.setVisible(true);
     }
     
     void dangXuat(){
         ShareHelper.logoff();
-        this.mnDangNhap();
+        this.dangNhap();
     }
     
     void thoat(){
@@ -63,50 +61,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         }
     }
     
-    public void openKH(){
-        if(ShareHelper.authenticated()){
-            KhachHangJDialog formKH = new KhachHangJDialog(this, true);
-            openX(formKH);
-        }else{
-            DialogHelper.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
-    
-    public void openHoiVien(){
-        if(ShareHelper.authenticated()){
-//            KhachHangJDialog formKH = new KhachHangJDialog(this, true);
-//            openX(formKH);
-        }else{
-            DialogHelper.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
-    
-    public void openNhanVien(){
-        if(ShareHelper.authenticated()){
-            NhanvienJDialog formNV = new NhanvienJDialog(this, true);
-            openX(formNV);
-        }else{
-            DialogHelper.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
-    
-    public void openDichVu(){
-        if(ShareHelper.authenticated()){
-            DichVuDialog formDV = new DichVuDialog(this, true);
-            openX(formDV);
-        }else{
-            DialogHelper.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
-    
-    public void openHoaDon(){
-        if(ShareHelper.authenticated()){
-//            HoaDon formKH = new KhachHangJDialog(this, true);
-//            openX(formKH);
-        }else{
-            DialogHelper.alert(this, "Vui lòng đăng nhập!");
-        }
-    }
     public void openDoiMK(){
         try{
             DoiMatKhauJDialog formDMK = new DoiMatKhauJDialog(this, true);
@@ -116,7 +70,54 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         }
     }
     
+    public void openKH(){
+        try{
+            KhachHangJDialog formKH = new KhachHangJDialog(this, true);
+            formKH.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     
+    public void openHV(){
+/*        try{
+            HoiVienJDialog formHV = new HoiVienJDialog(this, true);
+            formHV.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+*/        
+    }
+    
+    public void openNV(){
+        try{
+            NhanvienJDialog formNV = new NhanvienJDialog(this, true);
+            formNV.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void openDV(){
+        try{
+            DichVuDialog formDV = new DichVuDialog(this, true);
+            formDV.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void openHD(){
+/*        try{
+            HoaDonJDialog formHD = new HoaDonJDialog(this, true);
+            formHD.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+*/
+    }
+            
+            
     public void openX(JDialog x){
         for(JInternalFrame form : jDesktopPane1.getAllFrames()){
             form.dispose();
@@ -176,6 +177,11 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         btnkhachhang.setFocusable(false);
         btnkhachhang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnkhachhang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnkhachhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhachhangActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnkhachhang);
         jToolBar1.add(jSeparator5);
 
@@ -197,6 +203,11 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         btnnhanvien.setFocusable(false);
         btnnhanvien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnnhanvien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnnhanvien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnhanvienActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnnhanvien);
         jToolBar1.add(jSeparator9);
 
@@ -205,6 +216,11 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         btndichvu.setFocusable(false);
         btndichvu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btndichvu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btndichvu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndichvuActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btndichvu);
         jToolBar1.add(jSeparator7);
 
@@ -213,6 +229,11 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         btnhoadon.setFocusable(false);
         btnhoadon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnhoadon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnhoadon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhoadonActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnhoadon);
         jToolBar1.add(jSeparator8);
 
@@ -346,6 +367,25 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         thoat();
     }//GEN-LAST:event_btnthoatActionPerformed
+
+    private void btnkhachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhachhangActionPerformed
+        // TODO add your handling code here:
+        openKH();
+    }//GEN-LAST:event_btnkhachhangActionPerformed
+
+    private void btnnhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnhanvienActionPerformed
+        // TODO add your handling code here:
+        openNV();
+    }//GEN-LAST:event_btnnhanvienActionPerformed
+
+    private void btndichvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndichvuActionPerformed
+        // TODO add your handling code here:
+        openDV();
+    }//GEN-LAST:event_btndichvuActionPerformed
+
+    private void btnhoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhoadonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnhoadonActionPerformed
 
     /**
      * @param args the command line arguments
