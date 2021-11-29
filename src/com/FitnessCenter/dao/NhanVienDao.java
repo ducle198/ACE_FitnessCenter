@@ -15,8 +15,8 @@ import java.util.List;
  * @author ADMIN
  */
 public class NhanVienDao extends ACE_FitnessCenterDao<NhanVien, String>{
-    String INSERT_SQL = "INSERT INTO NHANVIEN(MANV,MATKHAU, HOTEN,GIOITINH,NGAYSINH,SDT VAITRO, CHUCVU) VALUES(?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE NHANVIEN SET MATKHAU =?, HOTEN=?,GIOITINH=?,NGAYSINH=?,SDT=?,VAITRO=?,CHUCVU=?";
+    String INSERT_SQL = "INSERT INTO NHANVIEN(MANV,MATKHAU,TENNV,GIOITINH,IDCARD,NGAYSINH,DIACHI,SDT,EMAIL,CHUCVU,KINHNGHIEM,HINHANH,TRANGTHAI) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE NHANVIEN SET MATKHAU =?,TENNV=?,GIOITINH=?,IDCARD=?,,NGAYSINH=?,DIACHI=?,SDT=?,EMAIL=?,CHUCVU=?,KINHNGHIEM=?,HINHANH=?,TRANGTHAI=? WHERE MANV=?";
     String DELETE_SQL = "DELETE FROM NHANVIEN WHRERE MANNV = ?";
     String SELECT_ALL_SQL = "SELECT *FROM NHANVIEN";
     String SELECT_BY_ID_SQL ="SELECT *FROM NHANVIEN WHERE MANV = ?";
@@ -24,15 +24,15 @@ public class NhanVienDao extends ACE_FitnessCenterDao<NhanVien, String>{
     @Override
     public void insert(NhanVien entity) {
         XJdbc.update(INSERT_SQL, 
-                entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(),entity.isGioiTinh(),entity.getNgaySinh(),entity.getPhoneNumber(),
-                entity.isVaiTro(),entity.getChucVu());
+                entity.getMaNV(), entity.getMatKhau(), entity.getHoTen(),entity.isGioiTinh(),entity.getIdCard(),entity.getNgaySinh(),entity.getDiaChi(),entity.getPhoneNumber(),
+                entity.getEmail(),entity.getChucVu(),entity.getChucVu(),entity.getKinhNghiem(),entity.getHinhAnh(),entity.isTrangthai());
     }
 
     @Override
     public void update(NhanVien entity) {
         XJdbc.update(UPDATE_SQL, 
-                entity.getMatKhau(), entity.getHoTen(),entity.isGioiTinh(),entity.getNgaySinh(),entity.getPhoneNumber(),
-                entity.isVaiTro(),entity.getChucVu());
+                entity.getMatKhau(), entity.getHoTen(),entity.isGioiTinh(),entity.getIdCard(),entity.getNgaySinh(),entity.getDiaChi(),entity.getPhoneNumber(),
+                entity.getEmail(),entity.getChucVu(),entity.getChucVu(),entity.getKinhNghiem(),entity.getHinhAnh(),entity.isTrangthai());
     }
 
     @Override
@@ -64,11 +64,16 @@ public class NhanVienDao extends ACE_FitnessCenterDao<NhanVien, String>{
                 nv.setMaNV(rs.getString("MaNV"));
                 nv.setMatKhau(rs.getString("MatKhau"));
                 nv.setHoTen(rs.getString("HoTen"));
-                nv.setVaiTro(rs.getBoolean("GioiTinh"));
-                nv.setMatKhau(rs.getString("NgaySinh"));
-                nv.setMatKhau(rs.getString("SDT"));
-                nv.setVaiTro(rs.getBoolean("VaiTro"));
+                nv.setGioiTinh(rs.getBoolean("GioiTinh"));
+                nv.setIdCard(rs.getString("IdCard"));
+                nv.setNgaySinh(rs.getDate("NgaySinh"));
+                nv.setDiaChi(rs.getString("DiaChi"));
+                nv.setPhoneNumber(rs.getString("SDT"));
+                nv.setPhoneNumber(rs.getString("Email"));               
                 nv.setMatKhau(rs.getString("ChucVu"));
+                nv.setKinhNghiem(Integer.parseInt(rs.getString("KinhNghiem")));
+                nv.setHinhAnh(rs.getString("HinhAnh"));
+                nv.setTrangthai(rs.getBoolean("TrangThai"));
                 list.add(nv);
             }
             rs.getStatement().getConnection().close();

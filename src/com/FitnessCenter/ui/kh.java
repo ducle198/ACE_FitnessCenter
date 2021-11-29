@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.FitnessCenter.dao;
+package com.FitnessCenter.ui;
 
 /**
  *
  * @author ADMIN
  */
-public class dao {
+class kh {
     
 }

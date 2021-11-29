@@ -5,7 +5,7 @@
  */
 package com.FitnessCenter.ui;
 
-import com.FitnessCenter.dao.dao;
+
 import com.FitnessCenter.utils.Auth;
 import static com.FitnessCenter.utils.Auth.clear;
 import com.FitnessCenter.utils.MsgBox;
@@ -46,7 +46,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
         }else{
             Auth.user.setMatKhau(matkhauMoi);
-            dao.update(Auth.user);
+//            dao.update(Auth.user);
             MsgBox.alert(this, "Đổi mật khẩu thành công!");
             clear();
         }

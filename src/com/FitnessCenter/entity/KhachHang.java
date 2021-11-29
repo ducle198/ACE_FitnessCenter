@@ -11,43 +11,40 @@ import java.util.Date;
  *
  * @author ADMIN
  */
-public class NhanVien {
-    String maNV;
-    String matKhau;
-    String hoTen;
+public class KhachHang {
+    String maKH;
+    String tenKH;
     boolean gioiTinh;
     String idCard;
     Date ngaySinh;
     String diaChi;
-    String phoneNumber;
+    String sdt;
     String email;
-    String chucVu;
-    int kinhNghiem;
     String hinhAnh;
-    boolean trangthai;
+    String ghiChu;
 
-    public String getMaNV() {
-        return maNV;
+    public String getGhiChu() {
+        return ghiChu;
     }
 
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
-    public String getMatKhau() {
-        return matKhau;
+    public String getMaKH() {
+        return maKH;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getTenKH() {
+        return tenKH;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
     public boolean isGioiTinh() {
@@ -82,12 +79,12 @@ public class NhanVien {
         this.diaChi = diaChi;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getSdt() {
+        return sdt;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
     public String getEmail() {
@@ -98,22 +95,6 @@ public class NhanVien {
         this.email = email;
     }
 
-    public String getChucVu() {
-        return chucVu;
-    }
-
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
-    }
-
-    public int getKinhNghiem() {
-        return kinhNghiem;
-    }
-
-    public void setKinhNghiem(int kinhNghiem) {
-        this.kinhNghiem = kinhNghiem;
-    }
-
     public String getHinhAnh() {
         return hinhAnh;
     }
@@ -121,13 +102,6 @@ public class NhanVien {
     public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
-
-    public boolean isTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(boolean trangthai) {
-        this.trangthai = trangthai;
-    }
-        
+    
+    
 }
