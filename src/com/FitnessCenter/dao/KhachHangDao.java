@@ -5,91 +5,95 @@
  */
 package com.FitnessCenter.dao;
 
-import com.ACE_FitnessCenter.helper.JdbcHelper;
 import com.FitnessCenter.entity.KhachHang;
+import com.FitnessCenter.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.layout.GridPane;
 
 /**
  *
- * @author Mycomputer
+ * @author ADMIN
  */
-public class KhachHangDao extends MainDao<KhachHang, String> {
-     String INSERT_SQL = "INSERT INTO KHACHHANG(MAKH,TENKH,GIOITINH,IDCARD,NGAYSINH,DIACHI,SDT,EMMAIL,HINHANH,GHICHU) VALUES (?,?,?,?,?,?,?,?,?,?)";
-    String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?,GIOITINH =?,IDCARD =?, NGAYSINH =?,DIACHI = ? , SDT =?,EMMAIL = ? ,HINHANH = ?,GHICHU = ?  WHERE MAKH = ?";
-    String DELETE_SQL = "DELETE KHACHHANG WHERE MAKH = ?";
+public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
+    String INSERT_SQL = "INSERT INTO KHACHHANG(MAKH,TENKH,GIOITINH,IDCARD,NGAYSINH,DIACHI,SDT,EMAIL,HINHANH,GHICHU) VALUES(?,?,?,?,?,?,?,?)";
+    String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, GIOITINH = ?, IDCARD = ?, NGAYSINH = ?, DIACHI = ?, SDT = ?, EMAIL = ?, HINHANH = ?, GHICHU = ?, MaNV = ? WHERE MaNH = ?";
+    String DELETE_SQL = "DELETE FROM KHACHHANG WHERE MAKH = ?";
     String SELECT_ALL_SQL = "SELECT * FROM KHACHHANG";
-    String SELECT_BY_ID_SQl = "SELECT * FROM KHACHHANG WHERE MAKH = ?";
+    String SELECT_BY_ID_SQL = "SELECT * FROM KHACHHANG WHERE MAKH = ?";
 
     @Override
     public void insert(KhachHang entity) {
-       JdbcHelper.update(INSERT_SQL , entity.getMaKH(), entity.getTenKH(),entity.getGioiTinh(), entity.getSoCCCD(), entity.getNgaysinh(), entity.getDiaChi(),entity.getSoDienThoai(), entity.getEmail(), entity.getHinhAnh(),entity.getGhiChu());
+       XJdbc.update(INSERT_SQL, 
+                entity.getMaKH(), entity.getTenKH(), entity.isGioiTinh(), entity.getIdCard(),
+                new java.sql.Date(entity.getNgaySinh().getTime()), 
+                entity.getDiaChi(),entity.getSdt(), entity.getEmail(),entity.getHinhAnh(), entity.getGhiChu());
     }
 
     @Override
     public void update(KhachHang entity) {
-        JdbcHelper.update(INSERT_SQL , entity.getMaKH(), entity.getTenKH(),entity.getGioiTinh(), entity.getSoCCCD(), entity.getNgaysinh(), entity.getDiaChi(),entity.getSoDienThoai(), entity.getEmail(), entity.getHinhAnh(),entity.getGhiChu());
+        XJdbc.update(UPDATE_SQL, 
+                entity.getTenKH(), entity.isGioiTinh(), entity.getIdCard(),
+                new java.sql.Date(entity.getNgaySinh().getTime()), 
+                entity.getDiaChi(),entity.getSdt(), entity.getEmail(),entity.getHinhAnh(), entity.getGhiChu(),entity.getMaKH());
+        
     }
 
     @Override
     public void delete(String id) {
-         JdbcHelper.update(DELETE_SQL, id);
-    }
-
-    @Override
-    public KhachHang selectById(String id) {
-         List<KhachHang> list = this.selectBySql(SELECT_BY_ID_SQl, id);
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.get(0);
+        XJdbc.update(DELETE_SQL, id);
     }
 
     @Override
     public List<KhachHang> selectAll() {
-       return this.selectBySql(SELECT_ALL_SQL);
+       return this.selectBySQL(SELECT_ALL_SQL); 
     }
 
     @Override
-    protected List<KhachHang> selectBySql(String sql, Object... args) {
+    public KhachHang selectByID(String id) {
+        List<KhachHang> list = this.selectBySQL(SELECT_BY_ID_SQL, id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected List<KhachHang> selectBySQL(String sql, Object... args) {
         List<KhachHang> list = new ArrayList<KhachHang>();
         try {
-            
-            ResultSet rs = JdbcHelper.query(sql, args);
-            while (rs.next()) {
-                KhachHang entity = new KhachHang();
-                entity.setMaKH(rs.getString("MAKH"));
-                entity.setTenKH(rs.getString("TENKH"));
-                entity.setGioiTinh(rs.getBoolean("GIOITINH"));
-                entity.setSoCCCD(rs.getString("IDCARD"));
-                entity.setNgaysinh(rs.getDate("NGAYSINH"));
-                entity.setDiaChi(rs.getString("DIACHI"));
-                entity.setSoDienThoai(rs.getString("SODT"));
-                 entity.setEmail(rs.getString("EMAIL"));
-                  entity.setHinhAnh(rs.getString("HINHANH"));
-                   entity.setGhiChu(rs.getString("GHICHU"));
-                list.add(entity);
+            ResultSet rs = XJdbc.query(sql, args);
+            while(rs.next()){
+                KhachHang nh = new KhachHang();
+                nh.setMaKH(rs.getString("MaKH"));
+                nh.setTenKH(rs.getString("TENKH"));
+                nh.setGioiTinh(rs.getBoolean("GioiTinh"));              
+                nh.setIdCard(rs.getString("IDCARD"));              
+                nh.setNgaySinh(rs.getDate("NgaySinh"));
+                nh.setSdt(rs.getString("SDT"));
+                nh.setEmail(rs.getString("Email"));
+                nh.setHinhAnh(rs.getString("HinhAnh"));
+                nh.setGhiChu(rs.getString("GhiChu"));                            
+                list.add(nh);
             }
             rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+            
+            
+        }//To change body of generated methods, choose Tools | Templates.
     }
- public List<KhachHang> selectByKeyWork(String keywork) {
-         String SELECT_BY_KeyWork = "SELECT * FROM KHACHHANG WHERE MAKH like '%"+keywork+"%' or TENKH like '%"+keywork+"%' or SODT like '%"+keywork+"%'";
-        return this.selectBySql(SELECT_BY_KeyWork);
-        
+    public List<KhachHang> selectByKeyword(String keyword){
+        String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%");
     }
- 
-     public  boolean checkDuplicate(String maKH) {
-        KhachHang khachHang = selectById(maKH);
-        if (khachHang == null) {
-            return true;
-        }
-        return false;
+
+    public List<KhachHang> selectNotInCourse(int makh, String keyword){
+        String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ? AND "
+                + "MAKH NOT IN (SELECT HOIVIEN FROM HocVien WHERE MaKH = ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%", makh);
     }
     
 }
-

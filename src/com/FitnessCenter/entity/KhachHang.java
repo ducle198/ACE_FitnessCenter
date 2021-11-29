@@ -9,29 +9,25 @@ import java.util.Date;
 
 /**
  *
- * @author Mycomputer
+ * @author ADMIN
  */
 public class KhachHang {
-    private String maKH, tenKH;
-    private boolean gioiTinh;
-    private String soCCCD;
-    private Date ngaysinh;
-    private String diaChi, soDienThoai, email;
-    private String hinhAnh, ghiChu;
+    String maKH;
+    String tenKH;
+    boolean gioiTinh;
+    String idCard;
+    Date ngaySinh;
+    String diaChi;
+    String sdt;
+    String email;
+    String hinhAnh;
+    String ghiChu;
 
-    public KhachHang() {
+    public String getGhiChu() {
+        return ghiChu;
     }
 
-    public KhachHang(String maKH, String tenKH, boolean gioiTinh, String soCCCD, Date ngaysinh, String diaChi, String soDienThoai, String email, String hinhAnh, String ghiChu) {
-        this.maKH = maKH;
-        this.tenKH = tenKH;
-        this.gioiTinh = gioiTinh;
-        this.soCCCD = soCCCD;
-        this.ngaysinh = ngaysinh;
-        this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
-        this.hinhAnh = hinhAnh;
+    public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
 
@@ -51,7 +47,7 @@ public class KhachHang {
         this.tenKH = tenKH;
     }
 
-    public boolean getGioiTinh() {
+    public boolean isGioiTinh() {
         return gioiTinh;
     }
 
@@ -59,20 +55,20 @@ public class KhachHang {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getSoCCCD() {
-        return soCCCD;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setSoCCCD(String soCCCD) {
-        this.soCCCD = soCCCD;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public Date getNgaysinh() {
-        return ngaysinh;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setNgaysinh(Date ngaysinh) {
-        this.ngaysinh = ngaysinh;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getDiaChi() {
@@ -83,12 +79,12 @@ public class KhachHang {
         this.diaChi = diaChi;
     }
 
-    public String getSoDienThoai() {
-        return soDienThoai;
+    public String getSdt() {
+        return sdt;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
     public String getEmail() {
@@ -105,19 +101,6 @@ public class KhachHang {
 
     public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
-    }
-
-    public String getGhiChu() {
-        return ghiChu;
-    }
-
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
-
-    @Override
-    public String toString() {
-        return  tenKH ;
     }
     
     
