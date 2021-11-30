@@ -96,10 +96,7 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
         tblHoiVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Hội Viên", "Mã Dịch Vụ", "Mã Khách Hàng", "Ngày Bắt Đầu Tập", "Trạng Thái", "Ghi Chú"
