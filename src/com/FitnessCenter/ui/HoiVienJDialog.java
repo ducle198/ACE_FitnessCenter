@@ -30,7 +30,7 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
     DefaultTableModel mode = new DefaultTableModel();
     DefaultComboBoxModel<DichVu> cbModel;
-    int index = 0;
+    int index ;
     DichVuDao dvDao = new DichVuDao();
     HoiVienDao dao = new HoiVienDao();
 
@@ -96,10 +96,7 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
         tblHoiVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Hội Viên", "Mã Dịch Vụ", "Mã Khách Hàng", "Ngày Bắt Đầu Tập", "Trạng Thái", "Ghi Chú"
@@ -536,9 +533,10 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
     private void btnTheoDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTheoDoiActionPerformed
         try {
-            index=tblHoiVien.getSelectedRow();
+          index=tblHoiVien.getSelectedRow();
           String a= (String) tblHoiVien.getValueAt(index, 0);
           new TheoDoiJDialog(a).setVisible(true);
+          this.dispose();
            
 
         } catch (Exception e) {

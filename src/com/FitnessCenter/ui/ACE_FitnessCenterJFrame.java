@@ -176,6 +176,11 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         btnkhachhang.setFocusable(false);
         btnkhachhang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnkhachhang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnkhachhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhachhangActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnkhachhang);
         jToolBar1.add(jSeparator5);
 
@@ -346,6 +351,10 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         thoat();
     }//GEN-LAST:event_btnthoatActionPerformed
+
+    private void btnkhachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhachhangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnkhachhangActionPerformed
 
     /**
      * @param args the command line arguments
