@@ -92,7 +92,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     
     public void openDichVu(){
         try{
-            DichVuDialog formDMK = new DichVuDialog(this, true);
+            DichVuDialog formDV = new DichVuDialog(this, true);
             formDV.setVisible(true);
         }catch(Exception e){
             e.printStackTrace();
