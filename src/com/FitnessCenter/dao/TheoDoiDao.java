@@ -18,8 +18,9 @@ import java.util.List;
  * @author Mycomputer
  */
 public class TheoDoiDao {
+
     public void insert(TheoDoi model) {
-        String sql = "INSERT INTO TheoDoi (IDtheodoi,MAHV,CANNANG,SODOV1,SODOV2,SODOV3,ngaytheodoi,GHICHU ) VALUES (?,?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO TheoDoi (IDtheodoi,MAHV,CANNANG,SODOV1,SODOV2,SODOV3,GHICHU ) VALUES (?, ?, ?, ?, ?, ?,?)";
         JdbcHelper.executeUpdate(sql,
                 model.getIDtheodoi(),
                 model.getMahv(),
@@ -27,22 +28,19 @@ public class TheoDoiDao {
                 model.getSoDov1(),
                 model.getSoDov2(),
                 model.getSodov3(),
-                model.getNgayTheoDoi(),
                 model.getGhiChu()
         );
     }
 
     public void Update(TheoDoi theodoi) {
-        String sql = "UPDATE TheoDoi SET IDtheodoi, CANNANG=?,SODOV1=?,SODOV2=?,SODOV3=?,ngaytheodoi=?,GHICHU=? WHERE MaHV=?";
-        JdbcHelper.executeUpdate(sql,                                            
-                theodoi.getIDtheodoi(),
+        String sql = "UPDATE TheoDoi SET  CANNANG=?,SODOV1=?,SODOV2=?,SODOV3=?,GHICHU=? WHERE IDTheoDoi=?";
+        JdbcHelper.executeUpdate(sql,
                 theodoi.getCanNang(),
                 theodoi.getSoDov1(),
                 theodoi.getSoDov2(),
                 theodoi.getSodov3(),
-                theodoi.getNgayTheoDoi(),
                 theodoi.getGhiChu(),
-                theodoi.getMahv()
+                theodoi.getIDtheodoi()
         );
     }
 
@@ -50,6 +48,7 @@ public class TheoDoiDao {
         String sql = "DELETE FROM TheoDoi WHERE MaHV=?";
         JdbcHelper.executeUpdate(sql, id);
     }
+
     public void deletetheoID(String id) {
         String sql = "DELETE FROM TheoDoi WHERE IDtheodoi=?";
         JdbcHelper.executeUpdate(sql, id);
@@ -59,8 +58,13 @@ public class TheoDoiDao {
         String sql = "SELECT * FROM TheoDoi";
         return select(sql);
     }
+
     public List<TheoDoi> selecttheoID(String id) {
         String sql = "SELECT * FROM TheoDoi where MAHV=? ";
+        return select(sql, id);
+    }
+    public List<TheoDoi> selecttheoIDtheodoi(String id) {
+        String sql = "SELECT * FROM TheoDoi where IDTheoDoi=? ";
         return select(sql, id);
     }
 
@@ -68,15 +72,12 @@ public class TheoDoiDao {
         String sql = "SELECT * FROM TheoDoi WHERE MaHv LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
+
     public TheoDoi findById(String manh) {
         String sql = "SELECT * FROM TheoDoi WHERE MaHV=?";
         List<TheoDoi> list = select(sql, manh);
         return list.size() > 0 ? list.get(0) : null;
     }
-
-    
-   
-    
 
     private List<TheoDoi> select(String sql, Object... args) {
         List<TheoDoi> list = new ArrayList<>();
