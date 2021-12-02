@@ -10,6 +10,7 @@ import com.FitnessCenter.entity.NhanVien;
 import com.FitnessCenter.utils.MsgBox;
 import com.FitnessCenter.utils.XDate;
 import com.FitnessCenter.utils.XImage;
+import static java.awt.Color.pink;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -294,8 +295,15 @@ public class NhanvienJDialog extends javax.swing.JDialog {
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             return false;
-
-        } 
+        /* } else if (txtMaNV.getText().matches("[a-zA-Z0-6]{3,6}")) {
+            
+            MsgBox.alert(null, "Mật khẩu phải có ít nhất 6 ký tự \n Không được để khoảng trống");
+            txtMatKhau.setText("");
+            txtMatKhau.requestFocus();
+            return false;
+            */
+        }
+  
         // check TênNV
         if (txtTenNV.getText().length()==0) {
             MsgBox.alert(null, "Tên nhân viên không được để trống");
@@ -361,6 +369,11 @@ public class NhanvienJDialog extends javax.swing.JDialog {
             txtKinhNghiem.requestFocus();
             return false;
         }
+        else if (lblhinhanh.getToolTipText() == null) {
+            MsgBox.alert(this, "Bạn chưa chọn ảnh");              
+            return false;
+        }
+       
 
         List<NhanVien> list = dao.selectAll();
         if (chk) {
@@ -374,6 +387,7 @@ public class NhanvienJDialog extends javax.swing.JDialog {
         }
 
         return true;
+    
     }
 
     /**
