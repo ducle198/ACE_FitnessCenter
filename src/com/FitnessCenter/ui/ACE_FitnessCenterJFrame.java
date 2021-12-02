@@ -7,6 +7,8 @@ package com.FitnessCenter.ui;
 
 import com.ACE_FitnessCenter.helper.DialogHelper;
 import com.ACE_FitnessCenter.helper.ShareHelper;
+import com.FitnessCenter.utils.Auth;
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -20,8 +22,7 @@ import javax.swing.JDialog;
  * @author ADMIN
  */
 public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
-
-    /**
+        /**
      * Creates new form ACE_FitnessCenterJFrame
      */
     void init(){
@@ -34,11 +35,38 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
             }
         }).start();
         mnChao();
-        mnDangNhap();
     }
     public ACE_FitnessCenterJFrame() {
         initComponents();
         init();
+        mnDangNhap();
+        PhanQuyen();
+    }
+    
+    void PhanQuyen(){
+        try{
+            if(Auth.isLogin()){
+                String chucvu = Auth.user.getChucVu();
+                if(chucvu.equals("Quản lý")){
+                    this.dispose();
+                }else if(chucvu.equals("PT")){
+                    this.dispose();
+                    btndichvu.setEnabled(false);
+                    btnhoadon.setEnabled(false);
+                    btnkhachhang.setEnabled(false);
+                    btnnhanvien.setEnabled(false);
+                    btnthietbi.setEnabled(false);
+                }else if(chucvu.equals("Marketing")){
+                    btndichvu.setEnabled(false);
+                    btnhoivien.setEnabled(false);
+                    btnkhachhang.setEnabled(false);
+                    btnnhanvien.setEnabled(false);
+                    btnthietbi.setEnabled(false);
+                }
+            }
+        }catch(Exception e){
+            printStackTrace();
+        }
     }
     
     public void mnChao(){
@@ -46,15 +74,13 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     }
     
     public void mnDangNhap(){
-        for(JInternalFrame form : jDesktopPane1.getAllFrames()){
-            form.dispose();
-        }
-        new DangNhapJDialog(this, true).setVisible(true);
+        new DangNhapJDialog(this, true).setVisible(true); 
     }
     
     void dangXuat(){
-        ShareHelper.logoff();
-        this.mnDangNhap();
+        Auth.clear();
+        new ACE_FitnessCenterJFrame().setVisible(true);
+        this.dispose();
     }
     
     void thoat(){
@@ -74,8 +100,9 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     
     public void openHoiVien(){
         try{
-            HoiVienJDialog formHV = new HoiVienJDialog(this, true);
+            HoiVienJDialog formHV = new HoiVienJDialog();
             formHV.setVisible(true);
+            this.dispose();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -107,6 +134,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
     public void openDoiMK(){
         try{
             DoiMatKhauJDialog formDMK = new DoiMatKhauJDialog(this, true);
@@ -125,6 +153,32 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         }
     }
     
+    public void openThietBi(){
+        try{
+            ThietBiJDialog formTB = new ThietBiJDialog(this, true);
+            formTB.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void openHuongDan(){
+        try{
+            HuongdanJDialog formHD = new HuongdanJDialog();
+            formHD.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void openThongTin(){
+        try{
+            ThongTinJDialog formTT = new ThongTinJDialog();
+            formTT.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     
     public void openX(JDialog x){
         for(JInternalFrame form : jDesktopPane1.getAllFrames()){
@@ -135,7 +189,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jDesktopPane1.add(x);
         x.setVisible(true);
     }
-    
     
 
     /**
@@ -161,9 +214,8 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JToolBar.Separator();
         btnhoadon = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JToolBar.Separator();
-        btndangxuat = new javax.swing.JButton();
+        btnthietbi = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        btndoimk = new javax.swing.JButton();
         jSeparator10 = new javax.swing.JToolBar.Separator();
         btnthoat = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -172,8 +224,12 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,30 +301,18 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jToolBar1.add(btnhoadon);
         jToolBar1.add(jSeparator8);
 
-        btndangxuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit.png"))); // NOI18N
-        btndangxuat.setText("Đăng xuất");
-        btndangxuat.setFocusable(false);
-        btndangxuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btndangxuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btndangxuat.addActionListener(new java.awt.event.ActionListener() {
+        btnthietbi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brick house.png"))); // NOI18N
+        btnthietbi.setText("Thiết bị");
+        btnthietbi.setFocusable(false);
+        btnthietbi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnthietbi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnthietbi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndangxuatActionPerformed(evt);
+                btnthietbiActionPerformed(evt);
             }
         });
-        jToolBar1.add(btndangxuat);
+        jToolBar1.add(btnthietbi);
         jToolBar1.add(jSeparator2);
-
-        btndoimk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
-        btndoimk.setText("Đổi mật khẩu");
-        btndoimk.setFocusable(false);
-        btndoimk.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btndoimk.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btndoimk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndoimkActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btndoimk);
         jToolBar1.add(jSeparator10);
 
         btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Stop sign.png"))); // NOI18N
@@ -326,12 +370,52 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         );
 
         jMenu1.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
+        jMenuItem1.setText("Đổi mật khẩu");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+        jMenu1.add(jSeparator11);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit.png"))); // NOI18N
+        jMenuItem2.setText("Đăng xuất\n");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu4.setText("Edit");
-        jMenuBar1.add(jMenu4);
-
         jMenu5.setText("Trợ giúp");
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Globe.png"))); // NOI18N
+        jMenuItem3.setText("Hướng dẫn sử dụng\n");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Info.png"))); // NOI18N
+        jMenuItem4.setText("Thông tin ứng dụng\n");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem4);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -356,16 +440,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btndangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangxuatActionPerformed
-        // TODO add your handling code here:
-        dangXuat();
-    }//GEN-LAST:event_btndangxuatActionPerformed
-
-    private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
-        // TODO add your handling code here:
-        openDoiMK();
-    }//GEN-LAST:event_btndoimkActionPerformed
 
     private void btnhoivienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhoivienActionPerformed
         // TODO add your handling code here:
@@ -396,6 +470,31 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         openHoaDon();
     }//GEN-LAST:event_btnhoadonActionPerformed
+
+    private void btnthietbiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthietbiActionPerformed
+        // TODO add your handling code here:
+        openThietBi();
+    }//GEN-LAST:event_btnthietbiActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        openDoiMK();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        dangXuat();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        openHuongDan();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        openThongTin();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,23 +532,26 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btndangxuat;
     private javax.swing.JButton btndichvu;
-    private javax.swing.JButton btndoimk;
     private javax.swing.JButton btnhoadon;
     private javax.swing.JButton btnhoivien;
     private javax.swing.JButton btnkhachhang;
     private javax.swing.JButton btnnhanvien;
+    private javax.swing.JButton btnthietbi;
     private javax.swing.JButton btnthoat;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

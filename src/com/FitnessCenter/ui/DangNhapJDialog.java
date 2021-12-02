@@ -10,6 +10,8 @@ import com.FitnessCenter.entity.NhanVien;
 import com.FitnessCenter.utils.MsgBox;
 import com.ACE_FitnessCenter.helper.DialogHelper;
 import com.FitnessCenter.utils.Auth;
+import static java.awt.Color.pink;
+import static java.awt.Color.white;
 
 /**
  *
@@ -30,23 +32,47 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     void dangNhap(){
         String maNV = txtmanv.getText();
         String matkhau = txtmatkhau.getText();
-        NhanVien nv = dao.selectByID(maNV);
-        if(nv == null){
-            DialogHelper.alert(this, "Sai tên đăng nhập");
-            txtmanv.requestFocus();
-        }else if(!matkhau.equals(nv.getMatKhau())){
-            DialogHelper.alert(this, "Sai mật khẩu!");
-            txtmatkhau.requestFocus();
-    }else{
-            DialogHelper.alert(this, "Đăng nhập thành công!");
-            Auth.user = nv;
-            this.dispose();
+        try{
+            NhanVien nv = dao.selectByID(maNV);
+            if(nv != null){
+                String mk = nv.getMatKhau();
+                if(matkhau.equals(mk)){
+                Auth.user = nv;
+                DialogHelper.alert(this, "Đăng nhập thành công!");
+                this.dispose();
+            }else{
+                DialogHelper.alert(this, "Sai mật khẩu!");
+                this.dispose();
+            }
+            }else{
+                DialogHelper.alert(this, "Sai tên đăng nhập!");
+            }      
+        }catch (Exception e){
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
     
     void ketThuc(){
         if(DialogHelper.confirm(this, "Bạn muốn đóng ứng dụng?"))
            System.exit(0);
+    }
+    
+    void PhanQuyen(){
+        String maNV = txtmanv.getText();
+        NhanVien nv = dao.selectByID(maNV);
+        if(nv != null){
+            String chucvu = nv.getChucVu();
+            if(chucvu.equals("Quản lý")){
+                Auth.user = nv;
+                this.dispose();
+            }else if(chucvu.equals("PT")){
+                Auth.user = nv;
+                this.dispose();
+            }else if(chucvu.equals("Marketing")){
+                Auth.user = nv;
+                this.dispose();
+            }
+        }
     }
 
     /**
@@ -65,6 +91,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtmatkhau = new javax.swing.JPasswordField();
         btndangnhap = new javax.swing.JButton();
         btnthoat = new javax.swing.JButton();
+        cbohmk = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ACE- Đăng nhập");
@@ -99,6 +126,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             }
         });
 
+        cbohmk.setText("Hiện mật khẩu");
+        cbohmk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbohmkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,32 +152,35 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                             .addComponent(txtmatkhau))
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addComponent(btndangnhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnthoat, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbohmk)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btndangnhap)
-                            .addComponent(btnthoat))))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbohmk)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btndangnhap)
+                    .addComponent(btnthoat))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -156,14 +193,18 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void btndangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangnhapActionPerformed
         // TODO add your handling code here:
-        if(txtmanv.getText().length() == 0){
-            DialogHelper.alert(this, "Không được để trống tên đăng nhập!");
-            txtmanv.requestFocus();
-        }else if(txtmatkhau.getText().length() == 0){
-            DialogHelper.alert(this, "Không được để trống mật khẩu");
-            txtmatkhau.requestFocus();
+        txtmanv.setBackground(white);
+        txtmatkhau.setBackground(white);
+        if(txtmanv.getText().trim().length()>0){
+            if(txtmatkhau.getPassword().length>0){
+                dangNhap();
+            }else{
+                txtmatkhau.setBackground(pink);
+                DialogHelper.alert(this, "Không được để trống tên mật khẩu");
+            }
         }else{
-            dangNhap();
+            txtmanv.setBackground(pink);
+            DialogHelper.alert(this, "Không được để trống tên đăng nhập");
         }
     }//GEN-LAST:event_btndangnhapActionPerformed
 
@@ -171,6 +212,15 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         ketThuc();
     }//GEN-LAST:event_btnthoatActionPerformed
+
+    private void cbohmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbohmkActionPerformed
+        // TODO add your handling code here:
+        if(cbohmk.isSelected()){
+            txtmatkhau.setEchoChar((char) 0);
+        }else{
+            txtmatkhau.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbohmkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,6 +267,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btndangnhap;
     private javax.swing.JButton btnthoat;
+    private javax.swing.JCheckBox cbohmk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
