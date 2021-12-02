@@ -277,6 +277,7 @@ public class NhanvienJDialog extends javax.swing.JDialog {
 
     }
 
+    
     public boolean validateForm(boolean chk) {
         // Mã nhân viên
         if (txtMaNV.getText().length() == 0) {
