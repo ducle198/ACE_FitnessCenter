@@ -514,11 +514,11 @@ public class HoiVienJDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnDong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong2ActionPerformed
-        System.exit(0);
+       this.dispose();
     }//GEN-LAST:event_btnDong2ActionPerformed
 
     private void btnDong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong1ActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btnDong1ActionPerformed
 
     private void tblHoiVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoiVienMouseClicked
