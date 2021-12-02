@@ -87,7 +87,7 @@ public class HoiVienDao {
     private HoiVien readFromResultSet(ResultSet rs) throws SQLException {
         HoiVien hoivien = new HoiVien();
         hoivien.setMaHV(rs.getString("MaHV"));
-        hoivien.setMadv(rs.getString("MaDV"));
+        hoivien.setMadv(rs.getString("MADV"));
         hoivien.setMaKH(rs.getString("MaKh"));
         hoivien.setNgayBatDauVao(rs.getDate("NgayBatDauVao"));
         hoivien.setTrangThai(rs.getBoolean("TrangThai"));
