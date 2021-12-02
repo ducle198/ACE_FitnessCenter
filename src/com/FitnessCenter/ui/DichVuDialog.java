@@ -89,7 +89,6 @@ public class DichVuDialog extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
         btnDong = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ACE_FitnessCenter - Quản lý dịch vụ");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
