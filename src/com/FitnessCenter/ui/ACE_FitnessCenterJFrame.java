@@ -128,8 +128,8 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     
     public void openHoaDon(){
         try{
- //           HoaDon formDMK = new DoiMatKhauJDialog(this, true);
- //           formDMK.setVisible(true);
+            HoaDonJDialog formDMK = new HoaDonJDialog(this, true);
+            formDMK.setVisible(true);
         }catch(Exception e){
             e.printStackTrace();
         }
