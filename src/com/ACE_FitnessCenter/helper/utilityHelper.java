@@ -5,8 +5,13 @@
  */
 package com.ACE_FitnessCenter.helper;
 
+import com.FitnessCenter.dao.DichVuDao;
+import com.FitnessCenter.entity.DichVu;
+import static java.awt.Color.pink;
+import static java.awt.Color.white;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -16,7 +21,7 @@ import javax.swing.JTextField;
  * @author Admin
  */
 public class utilityHelper {
-
+    DichVuDao dao = new DichVuDao();
     public static String getRank(double diem) {
         String xepLoai = "Xuất sắc";
         if (diem < 0) {
@@ -262,6 +267,19 @@ public class utilityHelper {
             return true;
         } else {
             DialogHelper.alert(txt.getRootPane(), "Không được để trống mật khẩu!");
+            return false;
+        }
+    }
+    
+    public static boolean checkMaDV(JTextField txt) {
+        txt.setBackground(white);
+        String id = txt.getText();
+        String rgx = "[a-zA-Z0-9]{1,15}";
+        if (id.matches(rgx)) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            DialogHelper.alert(txt.getRootPane(), txt.getName() + " phải có 1-15 kí tự\nchữ hoa, thường không dấu hoặc số.");
             return false;
         }
     }
