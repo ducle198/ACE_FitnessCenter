@@ -102,7 +102,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         try{
             HoiVienJDialog formHV = new HoiVienJDialog();
             formHV.setVisible(true);
-            this.dispose();
+            
         }catch(Exception e){
             e.printStackTrace();
         }
