@@ -40,6 +40,8 @@ public class DichVuDialog extends javax.swing.JDialog {
         init();
     }
 
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +69,6 @@ public class DichVuDialog extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         rdoHoatDong = new javax.swing.JRadioButton();
         rdoKhongHD = new javax.swing.JRadioButton();
-        cboCaTap = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         txtNgayBatDau = new javax.swing.JTextField();
         txtGiaDV = new javax.swing.JTextField();
@@ -86,9 +87,11 @@ public class DichVuDialog extends javax.swing.JDialog {
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        txtCaTap = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         btnDong = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ACE_FitnessCenter - Quản lý dịch vụ");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -204,8 +207,6 @@ public class DichVuDialog extends javax.swing.JDialog {
 
         buttonGroup1.add(rdoKhongHD);
         rdoKhongHD.setText("Không Hoạt Động");
-
-        cboCaTap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setText("Ca Tập");
 
@@ -326,12 +327,12 @@ public class DichVuDialog extends javax.swing.JDialog {
                                 .addComponent(jLabel10)
                                 .addGap(263, 263, 263))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCaTap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNgayKt, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNgayKt, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                                     .addComponent(jLabel11)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                                    .addComponent(txtCaTap))
                                 .addContainerGap())))))
         );
 
@@ -363,9 +364,7 @@ public class DichVuDialog extends javax.swing.JDialog {
                                     .addComponent(rdoKhongHD)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtTenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCaTap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTenDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -373,7 +372,9 @@ public class DichVuDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNgayKt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)))
+                        .addComponent(jLabel11)
+                        .addGap(5, 5, 5)
+                        .addComponent(txtCaTap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -417,14 +418,13 @@ public class DichVuDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDong)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(321, 321, 321)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnDong))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,7 +450,7 @@ public class DichVuDialog extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.load();
         setVisible(true);
-        fillComboBox();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -459,6 +459,7 @@ public class DichVuDialog extends javax.swing.JDialog {
                 && utilityHelper.checkNullText(txtGiaDV)
                 && utilityHelper.checkDonGia(txtGiaDV)
                 && utilityHelper.checkNullText(txtNgayBatDau)
+                && utilityHelper.checkNullText(txtCaTap)
                 && utilityHelper.checkNullText(txtNgayKt)) {
             {
                 if (utilityHelper.checkDate(txtNgayBatDau)
@@ -480,11 +481,13 @@ public class DichVuDialog extends javax.swing.JDialog {
                     && utilityHelper.checkNullText(txtGiaDV)
                     && utilityHelper.checkDonGia(txtGiaDV)
                     && utilityHelper.checkNullText(txtNgayBatDau)
+                    && utilityHelper.checkNullText(txtCaTap)
                     && utilityHelper.checkNullText(txtNgayKt)) {
 
                 {
                     if (utilityHelper.checkDate(txtNgayBatDau)
                             &&utilityHelper.checkDonGia(txtGiaDV)
+                            &&utilityHelper.checkMaDV(txtMadv)
                             && utilityHelper.checkDate(txtNgayKt)) {
 
                             update();
@@ -626,7 +629,6 @@ public class DichVuDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cboCaTap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -646,6 +648,7 @@ public class DichVuDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton rdoKhongHD;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblQLDV;
+    private javax.swing.JTextField txtCaTap;
     private javax.swing.JTextField txtGiaDV;
     private javax.swing.JTextField txtMadv;
     private javax.swing.JTextArea txtMota;
@@ -703,8 +706,9 @@ public class DichVuDialog extends javax.swing.JDialog {
         txtMadv.setText(model.getMaDV());
         txtTenDV.setText(model.getTenDV());
         txtGiaDV.setText(String.valueOf(model.getGiaDV()));
-        cboCaTap.setToolTipText(String.valueOf(model.getMaCa()));
-        cboCaTap.getModel().setSelectedItem(ccdao.findById(model.getMaCa()));
+     //   cboCaTap.setToolTipText(String.valueOf(model.getMaCa()));
+     //   cboCaTap.getModel().setSelectedItem(ccdao.findById(model.getMaCa()));
+        txtCaTap.setText(model.getMaCa());
         txtNgayBatDau.setText(DateHelper.toString(model.getNgayBD()));
         txtNgayKt.setText(DateHelper.toString(model.getNgayKT()));
         rdoHoatDong.setSelected(model.isTrangThai());
@@ -716,16 +720,17 @@ public class DichVuDialog extends javax.swing.JDialog {
 
     DichVu getModel() {
         DichVu model = new DichVu();
-        CaTap catap = (CaTap) cboCaTap.getSelectedItem();
+        
         model.setMaDV(txtMadv.getText());
         model.setTenDV(txtTenDV.getText());
         model.setGiaDV(Float.valueOf(txtGiaDV.getText()));
-        model.setMaCa(String.valueOf(cboCaTap.getToolTipText()));
+  //      model.setMaCa(String.valueOf(cboCaTap.getToolTipText()));
+        model.setMaCa(txtCaTap.getText());
         model.setNgayBD(DateHelper.toDate(txtNgayBatDau.getText()));
         model.setNgayKT(DateHelper.toDate(txtNgayKt.getText()));
         model.setTrangThai(rdoHoatDong.isSelected());
         model.setMota(txtMota.getText());
-        model.setMaCa(String.valueOf(cboCaTap.getToolTipText()));
+        
 
         return model;
     }
@@ -779,19 +784,7 @@ public class DichVuDialog extends javax.swing.JDialog {
         }
     }
 
-    private void fillComboBox() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboCaTap.getModel();
-        model.removeAllElements();
-        try {
-            List<CaTap> list = ccdao.select();
-            for (CaTap cd : list) {
-                model.addElement(cd);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
-    }
+    
 
     public void openX(JInternalFrame x) {
 

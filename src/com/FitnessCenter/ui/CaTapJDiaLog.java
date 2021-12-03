@@ -112,6 +112,7 @@ public class CaTapJDiaLog extends javax.swing.JFrame {
 
     private void lbltrolaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrolaiMouseClicked
         new DichVuDialog(this, rootPaneCheckingEnabled).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lbltrolaiMouseClicked
 
     /**

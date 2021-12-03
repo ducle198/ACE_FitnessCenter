@@ -22,6 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import com.FitnessCenter.ui.TheoDoiJDialog;
+
 /**
  *
  * @author Mycomputer
@@ -29,8 +30,8 @@ import com.FitnessCenter.ui.TheoDoiJDialog;
 public class HoiVienJDialog extends javax.swing.JFrame {
 
     DefaultTableModel mode = new DefaultTableModel();
-    DefaultComboBoxModel<DichVu> cbModel;
-    int index ;
+
+    int index;
     DichVuDao dvDao = new DichVuDao();
     HoiVienDao dao = new HoiVienDao();
 
@@ -67,7 +68,6 @@ public class HoiVienJDialog extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cboMaDV = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         rdoDangnghi = new javax.swing.JRadioButton();
         rdoHoatDong = new javax.swing.JRadioButton();
@@ -84,10 +84,13 @@ public class HoiVienJDialog extends javax.swing.JFrame {
         btnLast = new javax.swing.JButton();
         btnDong2 = new javax.swing.JButton();
         txtMaKh = new javax.swing.JTextField();
+        txtMaDV = new javax.swing.JTextField();
+        btnXemDichVu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACE_FitnessCenter - Quản lý Hội Viên");
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -175,7 +178,7 @@ public class HoiVienJDialog extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(btnTimKiem))
                     .addComponent(btnTheoDoi))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,8 +214,6 @@ public class HoiVienJDialog extends javax.swing.JFrame {
         jLabel4.setText("MaDV");
 
         jLabel10.setText("Ghi Chú");
-
-        cboMaDV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Trạng Thái");
 
@@ -284,6 +285,13 @@ public class HoiVienJDialog extends javax.swing.JFrame {
             }
         });
 
+        btnXemDichVu.setText("Xem Dịch Vụ");
+        btnXemDichVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemDichVuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -326,18 +334,23 @@ public class HoiVienJDialog extends javax.swing.JFrame {
                                             .addComponent(txtMaKh))
                                         .addGap(74, 74, 74)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(rdoDangnghi)
-                                    .addComponent(jLabel4)
-                                    .addComponent(cboMaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rdoHoatDong))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(rdoDangnghi)
+                                            .addComponent(jLabel4)
+                                            .addComponent(rdoHoatDong))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtMaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnXemDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnXoa)
-                        .addGap(127, 127, 127)
+                        .addGap(123, 123, 123)
                         .addComponent(btnMoi)
                         .addGap(29, 29, 29))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -362,7 +375,11 @@ public class HoiVienJDialog extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtMaHV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtMaHV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(txtMaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnXemDichVu)))
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                 .addGap(47, 47, 47)
@@ -383,17 +400,14 @@ public class HoiVienJDialog extends javax.swing.JFrame {
                                         .addGap(16, 16, 16)
                                         .addComponent(jLabel10)
                                         .addGap(53, 53, 53))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboMaDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFirst)
                             .addComponent(btnPrev)
                             .addComponent(btnLast)
                             .addComponent(btnNext))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,11 +524,11 @@ public class HoiVienJDialog extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.load();
         setVisible(true);
-        fillComboBox();
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnDong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong2ActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnDong2ActionPerformed
 
     private void btnDong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDong1ActionPerformed
@@ -533,11 +547,10 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
     private void btnTheoDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTheoDoiActionPerformed
         try {
-          index=tblHoiVien.getSelectedRow();
-          String a= (String) tblHoiVien.getValueAt(index, 0);
-          new TheoDoiJDialog(a).setVisible(true);
-          this.dispose();
-           
+            index = tblHoiVien.getSelectedRow();
+            String a = (String) tblHoiVien.getValueAt(index, 0);
+            new TheoDoiJDialog(a).setVisible(true);
+            this.dispose();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -547,6 +560,16 @@ public class HoiVienJDialog extends javax.swing.JFrame {
     private void tblHoiVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoiVienMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_tblHoiVienMouseEntered
+
+    private void btnXemDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemDichVuActionPerformed
+        try {
+            XemDichVu formDV = new XemDichVu();
+      //      this.dispose();
+            formDV.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnXemDichVuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,9 +617,9 @@ public class HoiVienJDialog extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnTheoDoi;
     private javax.swing.JButton btnTimKiem;
+    private javax.swing.JButton btnXemDichVu;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cboMaDV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -615,6 +638,7 @@ public class HoiVienJDialog extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoHoatDong;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblHoiVien;
+    private javax.swing.JTextField txtMaDV;
     private javax.swing.JTextField txtMaHV;
     private javax.swing.JTextField txtMaKh;
     private javax.swing.JTextField txtNgayBatDauTap;
@@ -659,20 +683,6 @@ public class HoiVienJDialog extends javax.swing.JFrame {
         txtNgayBatDauTap.setText("");
         txtghiChu.setText("");
         txtMaKh.setText("");
-    }
-
-    private void fillComboBox() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaDV.getModel();
-        model.removeAllElements();
-        try {
-            List<DichVu> list = dvDao.select();
-            for (DichVu dv : list) {
-                model.addElement(dv);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
     }
 
     private void insert() {
@@ -741,20 +751,22 @@ public class HoiVienJDialog extends javax.swing.JFrame {
 
     HoiVien getModel() {
         HoiVien model = new HoiVien();
-        DichVu dv = (DichVu) cboMaDV.getSelectedItem();
+
         model.setMaHV(txtMaHV.getText());
         model.setNgayBatDauVao(DateHelper.toDate(txtNgayBatDauTap.getText()));
         model.setTrangThai(rdoHoatDong.isSelected());
         model.setGhiChu(txtghiChu.getText());
-        model.setMadv(String.valueOf(cboMaDV.getToolTipText()));
+        // model.setMadv(String.valueOf(cboMaDV.getToolTipText()));
+        model.setMadv(txtMaDV.getText());
         model.setMaKH(txtMaKh.getText());
         return model;
     }
 
     private void setModel(HoiVien model) {
         txtMaHV.setText(model.getMaHV());
-        cboMaDV.setToolTipText(String.valueOf(model.getMadv()));
-        cboMaDV.getModel().setSelectedItem(dvDao.findById(model.getMadv()));
+        // cboMaDV.setToolTipText(String.valueOf(model.getMadv()));
+        //  cboMaDV.getModel().setSelectedItem(dvDao.findById(model.getMadv()));
+        txtMaDV.setText(model.getMadv());
         txtNgayBatDauTap.setText(DateHelper.toString(model.getNgayBatDauVao()));
         txtMaKh.setText(model.getMaKH());
         rdoHoatDong.setSelected(model.isTrangThai());
