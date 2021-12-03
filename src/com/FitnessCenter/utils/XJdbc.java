@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 /**
  *
  * @author ADMIN
@@ -18,7 +17,7 @@ import java.sql.SQLException;
 public class XJdbc {
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=ACE_FitnessCenter2";
-    static String user = "sa";
+    static String user = "admin";
     static String pass = "123";
 
     //Nap Driver
