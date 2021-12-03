@@ -99,4 +99,13 @@ public class DichVuDao {
         dichvu.setMota(rs.getString("Mota"));
         return dichvu;
     }
+    public List<DichVu> selectByName(String keyword) {
+        String sql = "SELECT * FROM DichVu WHERE TENDV LIKE ?";
+        return  select(sql, "%" + keyword + "%");
+    }
+    public DichVu findByName(String name) {
+        String sql = "SELECT * FROM DichVu WHERE TENDV LIKE ?";
+        List<DichVu> list = select(sql, name);
+        return list.size() > 0 ? list.get(0) : null;
+    }
 }
