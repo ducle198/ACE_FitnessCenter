@@ -21,10 +21,22 @@ public class DichVu {
     private String TenDV;
     private float GiaDV;
     private String MaCa; 
-    private Date NgayBD;
-    private Date NgayKT;
+    private String HanSuDung;
     private boolean TrangThai;
     private String Mota;
+
+    public DichVu() {
+    }
+
+    public DichVu(String MaDV, String TenDV, float GiaDV, String MaCa, String HanSuDung, boolean TrangThai, String Mota) {
+        this.MaDV = MaDV;
+        this.TenDV = TenDV;
+        this.GiaDV = GiaDV;
+        this.MaCa = MaCa;
+        this.HanSuDung = HanSuDung;
+        this.TrangThai = TrangThai;
+        this.Mota = Mota;
+    }
 
     public String getMaDV() {
         return MaDV;
@@ -58,20 +70,12 @@ public class DichVu {
         this.MaCa = MaCa;
     }
 
-    public Date getNgayBD() {
-        return NgayBD;
+    public String getHanSuDung() {
+        return HanSuDung;
     }
 
-    public void setNgayBD(Date NgayBD) {
-        this.NgayBD = NgayBD;
-    }
-
-    public Date getNgayKT() {
-        return NgayKT;
-    }
-
-    public void setNgayKT(Date NgayKT) {
-        this.NgayKT = NgayKT;
+    public void setHanSuDung(String HanSuDung) {
+        this.HanSuDung = HanSuDung;
     }
 
     public boolean isTrangThai() {
@@ -90,19 +94,6 @@ public class DichVu {
         this.Mota = Mota;
     }
 
-    public DichVu(String MaDV, String TenDV, float GiaDV, String MaCa, Date NgayBD, Date NgayKT, boolean TrangThai, String Mota) {
-        this.MaDV = MaDV;
-        this.TenDV = TenDV;
-        this.GiaDV = GiaDV;
-        this.MaCa = MaCa;
-        this.NgayBD = NgayBD;
-        this.NgayKT = NgayKT;
-        this.TrangThai = TrangThai;
-        this.Mota = Mota;
-    }
-
-    public DichVu() {
-    }
     
 
     

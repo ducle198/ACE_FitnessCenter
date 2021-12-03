@@ -19,28 +19,26 @@ import java.util.List;
 public class DichVuDao {
 
     public void insert(DichVu model) {
-        String sql = "INSERT INTO DichVu (MaDV, TenDV, GiaDV, Maca, NgayBD, NgayKT, TrangThai, Mota) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DichVu (MaDV, TenDV, GiaDV, Maca, HanSuDung, TrangThai, Mota) VALUES (?, ?, ?, ?, ?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
                 model.getMaDV(),
                 model.getTenDV(),
                 model.getGiaDV(),
                 model.getMaCa(),
-                model.getNgayBD(),
-                model.getNgayKT(),
+                model.getHanSuDung(),
                 model.isTrangThai(),
                 model.getMota()
         );
     }
 
     public void Update(DichVu dichvu) {
-        String sql = "UPDATE DichVu SET TenDV=?, GiaDV=?, Maca=?, NgayBd=?, NgayKT=?, TrangThai=?, mota=? WHERE MaDV=?";
+        String sql = "UPDATE DichVu SET TenDV=?, GiaDV=?, Maca=?, HanSuDung = ?, TrangThai=?, mota=? WHERE MaDV=?";
         JdbcHelper.executeUpdate(sql,              
                 
                 dichvu.getTenDV(),
                 dichvu.getGiaDV(),
                 dichvu.getMaCa(),
-                dichvu.getNgayBD(),
-                dichvu.getNgayKT(),
+                dichvu.getHanSuDung(),
                 dichvu.isTrangThai(),
                 dichvu.getMota(),
                 dichvu.getMaDV()
@@ -93,8 +91,7 @@ public class DichVuDao {
         dichvu.setTenDV(rs.getString("TenDV"));
         dichvu.setGiaDV(rs.getFloat("GiaDV"));
         dichvu.setMaCa(rs.getString("MaCa"));
-        dichvu.setNgayBD(rs.getDate("NgayBd"));
-        dichvu.setNgayKT(rs.getDate("NgayKT"));
+        dichvu.setHanSuDung(rs.getString("HanSuDung"));
         dichvu.setTrangThai(rs.getBoolean("TrangThai"));
         dichvu.setMota(rs.getString("Mota"));
         return dichvu;
