@@ -5,76 +5,84 @@
  */
 package com.FitnessCenter.entity;
 
+import java.util.Date;
+
 /**
  *
- * @author pc
+ * @author ADMIN
  */
 public class HoaDon {
-    private String MaHoaDon ;
-    private String MaNV ; 
-    private String MaHV ;
-   private String sdt;
-    private double Giatien;
+    String MaHD;
+    Date ngayLap;
+    String maKH;
+    String maNV;
+    float tongTien;
+    float giamGia;
+    float khachDaTra;
+    float conNo;
 
-    public HoaDon() {
-    }
-    
-
-    public HoaDon(String MaHoaDon, String MaNV, String MaHV, String sdt, double Giatien) {
-        this.MaHoaDon = MaHoaDon;
-        this.MaNV = MaNV;
-        this.MaHV = MaHV;
-        this.sdt = sdt;
-        this.Giatien = Giatien;
+    public String getMaHD() {
+        return MaHD;
     }
 
-    public String getMaHoaDon() {
-        return MaHoaDon;
+    public void setMaHD(String MaHD) {
+        this.MaHD = MaHD;
     }
 
-    public void setMaHoaDon(String MaHoaDon) {
-        this.MaHoaDon = MaHoaDon;
+    public Date getNgayLap() {
+        return ngayLap;
+    }
+
+    public void setNgayLap(Date ngayLap) {
+        this.ngayLap = ngayLap;
+    }
+
+    public String getMaKH() {
+        return maKH;
+    }
+
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
     }
 
     public String getMaNV() {
-        return MaNV;
+        return maNV;
     }
 
-    public void setMaNV(String MaNV) {
-        this.MaNV = MaNV;
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
     }
 
-    public String getMaHV() {
-        return MaHV;
+    public float getTongTien() {
+        return tongTien;
     }
 
-    public void setMaHV(String MaHV) {
-        this.MaHV = MaHV;
+    public void setTongTien(float tongTien) {
+        this.tongTien = tongTien;
     }
 
-    public String getSdt() {
-        return sdt;
+    public float getGiamGia() {
+        return giamGia;
     }
 
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
+    public void setGiamGia(float giamGia) {
+        this.giamGia = giamGia;
     }
 
-    public double getGiatien() {
-        return Giatien;
+    public float getKhachDaTra() {
+        return khachDaTra;
     }
 
-    public void setGiatien(double Giatien) {
-        this.Giatien = Giatien;
+    public void setKhachDaTra(float khachDaTra) {
+        this.khachDaTra = khachDaTra;
     }
 
-    @Override
-    public String toString() {
-        return "HoaDon{" + "MaHoaDon=" + MaHoaDon + ", MaNV=" + MaNV + ", MaHV=" + MaHV + ", sdt=" + sdt + ", Giatien=" + Giatien + '}';
+    public float getConNo() {
+        return conNo;
     }
-    
-    
-    
-    
+
+    public void setConNo(float conNo) {
+        this.conNo = conNo;
+    }
     
 }
