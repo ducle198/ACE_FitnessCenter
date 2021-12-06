@@ -126,7 +126,7 @@ public class XemDichVu extends javax.swing.JFrame {
                 Object[] row = {
                     nv.getMaDV(),
                     nv.getTenDV(),
-                    nv.getNgayBD(),
+                    nv.getHanSuDung(),
                     
                 };   
                 model.addRow(row); 

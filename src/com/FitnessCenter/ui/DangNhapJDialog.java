@@ -42,7 +42,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 this.dispose();
             }else{
                 DialogHelper.alert(this, "Sai mật khẩu!");
-                this.dispose();
             }
             }else{
                 DialogHelper.alert(this, "Sai tên đăng nhập!");
