@@ -140,6 +140,19 @@ public class HoiVienJDialog extends javax.swing.JDialog {
         }
 
     }
+//    public boolean validateForm(boolean chk){
+//        String keyword = cboDichVu.getSelectedItem().toString();
+//        int row = tblKhachHang.getSelectedRow();
+//        String makH = (String) tblKhachHang.getValueAt(row, 0);
+//        List<HoiVien> list = hvdao.selectByDichVu(keyword);
+//        if (chk) {
+//            for (HoiVien cd : list) {
+//                if (makH.equals(cd.getMaKH())) {
+//                    MsgBox.alert(this, "Khách hàng đã đăng ký hội viên");
+//                    return false;
+//                }
+//            }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -330,8 +343,8 @@ public class HoiVienJDialog extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTheoDoi)
                     .addComponent(btnXoaHV)
@@ -470,4 +483,6 @@ public class HoiVienJDialog extends javax.swing.JDialog {
     private javax.swing.JTable tblKhachHang;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -321,9 +321,9 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lbltrolaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrolaiMouseClicked
-      this.dispose();
-//      new HoiVienJDialog().setVisible(true);
-        
+     
+      HoiVienJDialog formHV = new HoiVienJDialog(this, true);
+         this.dispose();
    
     }//GEN-LAST:event_lbltrolaiMouseClicked
 
