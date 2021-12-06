@@ -27,17 +27,18 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     TheoDoiDao dao = new TheoDoiDao();
     int index;
     DefaultTableModel model;
-    String b;
+   
 
     /**
      * Creates new form TheoDoiJDialog
      */
-    public TheoDoiJDialog(String a) {
+    public TheoDoiJDialog(int a) {
         initComponents();
         setLocationRelativeTo(null);
         
         this.load(a);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -304,7 +305,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
                             && utilityHelper.checkVong2(txtSodovong2)
                             && utilityHelper.checkVong3(txtSodovong3)) {
 
-                        insert(lblMaHv.getText());
+                        insert(Integer.valueOf(lblMaHv.getText()));
                         clear();
 
                     }
@@ -321,7 +322,9 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
 
     private void lbltrolaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrolaiMouseClicked
       this.dispose();
-      new HoiVienJDialog().setVisible(true);
+//      new HoiVienJDialog().setVisible(true);
+        
+   
     }//GEN-LAST:event_lbltrolaiMouseClicked
 
     /**
@@ -422,14 +425,14 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
         model.setSoDov2(Float.valueOf(txtSodovong2.getText()));
         model.setSodov3(Float.valueOf(txtSodovong3.getText()));
         model.setGhiChu(txtGhiChu.getText());
-        model.setMahv(lblMaHv.getText());
+        model.setMahv(Integer.valueOf(lblMaHv.getText()));
 
         return model;
     }
 
-    private void delete(String a) {
+    private void delete(int a) {
         if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa cột theo dõi tuần này?")) {
-            String id = txtIDtuan.getText();
+            int id = Integer.parseInt(txtIDtuan.getText());
             try {
                 dao.delete(id);
                 this.load(a);
@@ -455,7 +458,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
         tblTheoDoi.setRowSelectionInterval(index, index);
     }
 
-    private void load(String Mahv) {
+    private void load(int Mahv) {
         DefaultTableModel model = (DefaultTableModel) tblTheoDoi.getModel();
         model.setRowCount(0);
         try {
@@ -509,7 +512,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     private void edit() {
         setTrang();
         try {
-            String maHv = (String) tblTheoDoi.getValueAt(this.index, 0);
+            int maHv = (Integer) tblTheoDoi.getValueAt(this.index, 0);
             TheoDoi model = dao.findById(maHv);
             if (model != null) {
                 this.setModel(model);
@@ -523,7 +526,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
 
     private void setModel(TheoDoi model) {
         txtIDtuan.setText(model.getIDtheodoi());
-        lblMaHv.setText(model.getMahv());
+        lblMaHv.setText(String.valueOf(model.getMahv()));
         txtCanNang.setText(String.valueOf(model.getCanNang()));
         txtSodovong1.setText(String.valueOf(model.getSoDov1()));
         txtSodovong2.setText(String.valueOf(model.getSoDov2()));
@@ -533,7 +536,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
 
     }
 
-    private void insert(String a) {
+    private void insert(int a) {
         TheoDoi model = getModel();
         try {
             dao.insert(model);

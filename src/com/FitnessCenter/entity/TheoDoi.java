@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class TheoDoi {
     private String IDtheodoi;
-    private String Mahv;
+    private int Mahv;
     private float CanNang;
     private float SoDov1;
     private float SoDov2;
@@ -24,7 +24,7 @@ public class TheoDoi {
     public TheoDoi() {
     }
 
-    public TheoDoi(String IDtheodoi, String Mahv, float CanNang, float SoDov1, float SoDov2, float Sodov3, Date NgayTheoDoi, String GhiChu) {
+    public TheoDoi(String IDtheodoi, int Mahv, float CanNang, float SoDov1, float SoDov2, float Sodov3, Date NgayTheoDoi, String GhiChu) {
         this.IDtheodoi = IDtheodoi;
         this.Mahv = Mahv;
         this.CanNang = CanNang;
@@ -43,11 +43,11 @@ public class TheoDoi {
         this.IDtheodoi = IDtheodoi;
     }
 
-    public String getMahv() {
+    public int getMahv() {
         return Mahv;
     }
 
-    public void setMahv(String Mahv) {
+    public void setMahv(int Mahv) {
         this.Mahv = Mahv;
     }
 

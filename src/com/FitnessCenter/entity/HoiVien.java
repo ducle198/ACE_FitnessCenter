@@ -12,30 +12,17 @@ import java.util.Date;
  * @author Mycomputer
  */
 public class HoiVien {
-    private String MaHV;
+    private int MaHV;
     private String Madv;
     private String MaKH;
     private Date NgayBatDauVao;
     private boolean TrangThai;
-    private String GhiChu;
 
-    public HoiVien() {
-    }
-
-    public HoiVien(String MaHV, String Madv, String MaKH, Date NgayBatDauVao, boolean TrangThai, String GhiChu) {
-        this.MaHV = MaHV;
-        this.Madv = Madv;
-        this.MaKH = MaKH;
-        this.NgayBatDauVao = NgayBatDauVao;
-        this.TrangThai = TrangThai;
-        this.GhiChu = GhiChu;
-    }
-
-    public String getMaHV() {
+    public int getMaHV() {
         return MaHV;
     }
 
-    public void setMaHV(String MaHV) {
+    public void setMaHV(int MaHV) {
         this.MaHV = MaHV;
     }
 
@@ -71,20 +58,5 @@ public class HoiVien {
         this.TrangThai = TrangThai;
     }
 
-    public String getGhiChu() {
-        return GhiChu;
-    }
-
-    public void setGhiChu(String GhiChu) {
-        this.GhiChu = GhiChu;
-    }
-
-    @Override
-    public String toString() {
-        return "HoiVien{" + "MaHV=" + MaHV + ", Madv=" + Madv + ", MaKH=" + MaKH + ", NgayBatDauVao=" + NgayBatDauVao + ", TrangThai=" + TrangThai + ", GhiChu=" + GhiChu + '}';
-    }
-
-   
-
-  
+     
 }

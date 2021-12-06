@@ -20,30 +20,26 @@ import java.util.List;
 public class HoiVienDao {
 
     public void insert(HoiVien model) {
-        String sql = "INSERT INTO HoiVien (MaHv, MaDv, MaKh, NgayBatDauVao, trangthai, ghichu) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO HoiVien (MADV,MAKH,NGAYBATDAUVAO,TRANGTHAI) VALUES (?,?,?, ?)";
         JdbcHelper.executeUpdate(sql,
-                model.getMaHV(),
                 model.getMadv(),
-                model.getMaKH(),                
+                model.getMaKH(),
                 model.getNgayBatDauVao(),
-                model.isTrangThai(),
-                model.getGhiChu()
+                model.isTrangThai()
         );
     }
 
     public void Update(HoiVien hoivien) {
-        String sql = "UPDATE HoiVien SET MaDv=?, MaKh=?, NgayBatDauVao=?, trangthai=?, ghichu=?  WHERE MaHV=?";
+        String sql = "UPDATE HoiVien SET MaDv=?, MaKh=? trangthai=?  WHERE MaHV=?";
         JdbcHelper.executeUpdate(sql,
                 hoivien.getMadv(),
                 hoivien.getMaKH(),
-                hoivien.getNgayBatDauVao(),
                 hoivien.isTrangThai(),
-                hoivien.getGhiChu(),
                 hoivien.getMaHV()
         );
     }
 
-    public void delete(String id) {
+    public void delete(int id) {
         String sql = "DELETE FROM HoiVien WHERE MaHV=?";
         JdbcHelper.executeUpdate(sql, id);
     }
@@ -53,14 +49,14 @@ public class HoiVienDao {
         return select(sql);
     }
 
-    public List<HoiVien> selectByKeyword(String keyword) {
+    public List<HoiVien> selectByKeyword(int keyword) {
         String sql = "SELECT * FROM HoiVien WHERE MaHV LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
 
-    public HoiVien findById(String manh) {
+    public HoiVien findById(int mahv) {
         String sql = "SELECT * FROM HoiVien WHERE MaHV=?";
-        List<HoiVien> list = select(sql, manh);
+        List<HoiVien> list = select(sql, mahv);
         return list.size() > 0 ? list.get(0) : null;
     }
 
@@ -86,13 +82,22 @@ public class HoiVienDao {
 
     private HoiVien readFromResultSet(ResultSet rs) throws SQLException {
         HoiVien hoivien = new HoiVien();
-        hoivien.setMaHV(rs.getString("MaHV"));
+        hoivien.setMaHV(rs.getInt("MaHV"));
         hoivien.setMadv(rs.getString("MADV"));
         hoivien.setMaKH(rs.getString("MaKh"));
         hoivien.setNgayBatDauVao(rs.getDate("NgayBatDauVao"));
         hoivien.setTrangThai(rs.getBoolean("TrangThai"));
-        hoivien.setGhiChu(rs.getString("GhiChu"));
-
         return hoivien;
     }
+
+     public List<HoiVien> selectByDichVu(String keyword) {
+        String sql = "SELECT * FROM HoiVien WHERE MaDV LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+     public List<HoiVien> selectByKey(String maKH, String maDV){
+         String sql = "SELECT *FROM HOIVIEN WHERE MAKH LIKE ? AND MADV LIKE ?";
+         return select(sql,maKH,maDV);
+     }
+
+
 }
