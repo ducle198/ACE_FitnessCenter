@@ -93,7 +93,7 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
 
     public List<KhachHang> selectNotInCourse(int makh, String keyword){
         String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ? AND "
-                + "MAKH NOT IN (SELECT HOIVIEN FROM HocVien WHERE MaKH = ?)";
+                + "MAKH NOT IN (SELECT HOIVIEN FROM HOIVien WHERE MaKH = ?)";
         return this.selectBySQL(sql, "%" + keyword + "%", makh);
     }
     

@@ -44,7 +44,7 @@ public class TheoDoiDao {
         );
     }
 
-    public void delete(String id) {
+    public void delete(int id) {
         String sql = "DELETE FROM TheoDoi WHERE MaHV=?";
         JdbcHelper.executeUpdate(sql, id);
     }
@@ -59,7 +59,7 @@ public class TheoDoiDao {
         return select(sql);
     }
 
-    public List<TheoDoi> selecttheoID(String id) {
+    public List<TheoDoi> selecttheoID(int id) {
         String sql = "SELECT * FROM TheoDoi where MAHV=? ";
         return select(sql, id);
     }
@@ -68,12 +68,12 @@ public class TheoDoiDao {
         return select(sql, id);
     }
 
-    public List<TheoDoi> selectByKeyword(String keyword) {
+    public List<TheoDoi> selectByKeyword(int keyword) {
         String sql = "SELECT * FROM TheoDoi WHERE MaHv LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
 
-    public TheoDoi findById(String manh) {
+    public TheoDoi findById(int manh) {
         String sql = "SELECT * FROM TheoDoi WHERE MaHV=?";
         List<TheoDoi> list = select(sql, manh);
         return list.size() > 0 ? list.get(0) : null;
@@ -101,7 +101,7 @@ public class TheoDoiDao {
     private TheoDoi readFromResultSet(ResultSet rs) throws SQLException {
         TheoDoi theodoi = new TheoDoi();
         theodoi.setIDtheodoi(rs.getString("IDtheodoi"));
-        theodoi.setMahv(rs.getString("Mahv"));
+        theodoi.setMahv(rs.getInt("Mahv"));
         theodoi.setCanNang(rs.getFloat("CanNang"));
         theodoi.setSoDov1(rs.getFloat("SoDov1"));
         theodoi.setSoDov2(rs.getFloat("SoDov2"));
