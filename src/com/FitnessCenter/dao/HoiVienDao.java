@@ -94,10 +94,10 @@ public class HoiVienDao {
         String sql = "SELECT * FROM HoiVien WHERE MaDV LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
-     public List<HoiVien> selectByKey(String maKH, String maDV){
-         String sql = "SELECT *FROM HOIVIEN WHERE MAKH LIKE ? AND MADV LIKE ?";
-         return select(sql,maKH,maDV);
-     }
+//     public List<HoiVien> selectByKey(String maDV){
+//         String sql = "SELECT *FROM HOIVIEN WHERE MAKH LIKE ? AND MADV LIKE ?";
+//         return select(sql,maKH,maDV);
+//     }
 
 
 }
