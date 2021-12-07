@@ -314,7 +314,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator8);
 
         btnthietbi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brick house.png"))); // NOI18N
-        btnthietbi.setText("Thiết bị");
+        btnthietbi.setText("Thống Kê");
         btnthietbi.setFocusable(false);
         btnthietbi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnthietbi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -443,7 +443,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jDesktopPane1)
         );
@@ -492,7 +492,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
 
     private void btnthietbiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthietbiActionPerformed
         // TODO add your handling code here:
-        openThietBi();
+        openThongKe();
     }//GEN-LAST:event_btnthietbiActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -583,4 +583,13 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblDongHo;
     // End of variables declaration//GEN-END:variables
+
+    private void openThongKe() {
+        try{
+            ThongKeJDialog formTk = new ThongKeJDialog();
+            formTk.setVisible(true);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
