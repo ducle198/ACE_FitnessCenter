@@ -66,13 +66,13 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
                     btnhoadon.setEnabled(false);
                     btnkhachhang.setEnabled(false);
                     btnnhanvien.setEnabled(false);
-                    btnthietbi.setEnabled(false);
+                    
                 }else if(chucvu.equals("Marketing")){
                     btndichvu.setEnabled(false);
                     btnhoivien.setEnabled(false);
                     btnkhachhang.setEnabled(false);
                     btnnhanvien.setEnabled(false);
-                    btnthietbi.setEnabled(false);
+                    
                 }
             }
         }catch(Exception e){
@@ -111,7 +111,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     
     public void openHoiVien(){
         try{
-            HoiVienJDialog formHV = new HoiVienJDialog();
+            HoiVienJDialog formHV = new HoiVienJDialog(this,true);
             formHV.setVisible(true);
             
         }catch(Exception e){
@@ -225,8 +225,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JToolBar.Separator();
         btnhoadon = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JToolBar.Separator();
-        btnthietbi = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
         jSeparator10 = new javax.swing.JToolBar.Separator();
         btnthoat = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -312,19 +310,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(btnhoadon);
         jToolBar1.add(jSeparator8);
-
-        btnthietbi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Brick house.png"))); // NOI18N
-        btnthietbi.setText("Thiết bị");
-        btnthietbi.setFocusable(false);
-        btnthietbi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnthietbi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnthietbi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthietbiActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnthietbi);
-        jToolBar1.add(jSeparator2);
         jToolBar1.add(jSeparator10);
 
         btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Stop sign.png"))); // NOI18N
@@ -443,7 +428,7 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jDesktopPane1)
         );
@@ -489,11 +474,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         openHoaDon();
     }//GEN-LAST:event_btnhoadonActionPerformed
-
-    private void btnthietbiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthietbiActionPerformed
-        // TODO add your handling code here:
-        openThietBi();
-    }//GEN-LAST:event_btnthietbiActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -556,7 +536,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnhoivien;
     private javax.swing.JButton btnkhachhang;
     private javax.swing.JButton btnnhanvien;
-    private javax.swing.JButton btnthietbi;
     private javax.swing.JButton btnthoat;
     private javax.swing.JLabel image;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -572,7 +551,6 @@ public class ACE_FitnessCenterJFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;

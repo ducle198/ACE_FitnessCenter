@@ -25,7 +25,7 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
 
     @Override
     public void insert(KhachHang entity) {
-       XJdbc.update(INSERT_SQL, 
+       XJdbc.update(INSERT_SQL, entity.getMaKH(),
                 entity.getTenKH(), entity.isGioiTinh(), entity.getIdCard(),
                 new java.sql.Date(entity.getNgaySinh().getTime()), 
                 entity.getDiaChi(),entity.getSdt(), entity.getEmail(),entity.getHinhAnh(), entity.getGhiChu());
@@ -91,10 +91,11 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
         return this.selectBySQL(sql, "%" + keyword + "%");
     }
 
-    public List<KhachHang> selectNotInCourse(int makh, String keyword){
-        String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ? AND "
-                + "MAKH NOT IN (SELECT HOIVIEN FROM HOIVien WHERE MaKH = ?)";
-        return this.selectBySQL(sql, "%" + keyword + "%", makh);
+    public List<KhachHang> selectNotInCourse(String keyword){
+        String sql = "SELECT *FROM KHACHHANG WHERE MAKH NOT IN(SELECT  KHACHHANG.MAKH FROM KHACHHANG  JOIN HOADON ON KHACHHANG.MAKH = HOADON.MAKH\n" +
+"                                                                                                      JOIN CTHOADON ON   HOADON.MAHD = CTHOADON.MAHD\n" +
+"WHERE CTHOADON.MADV LIKE ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%");
     }
     
 }

@@ -13,6 +13,7 @@ import com.FitnessCenter.entity.CaTap;
 import com.FitnessCenter.entity.DichVu;
 import com.FitnessCenter.entity.HoiVien;
 import com.FitnessCenter.entity.TheoDoi;
+import com.FitnessCenter.utils.XDate;
 import static java.awt.Color.white;
 import java.awt.HeadlessException;
 import java.util.List;
@@ -323,6 +324,8 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     private void lbltrolaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrolaiMouseClicked
       this.dispose();
 //      new HoiVienJDialog().setVisible(true);
+        HoiVienJDialog formHV = new HoiVienJDialog(this, true);
+        formHV.setVisible(true);
         
    
     }//GEN-LAST:event_lbltrolaiMouseClicked
@@ -408,9 +411,10 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
 
     public void setTrang() {
         txtCanNang.setBackground(white);
+        txtCanNang.setText("");
         txtSodovong1.setText("");
         txtSodovong2.setText("");
-        txtSodovong3.setText("");
+        txtSodovong3.setText(XDate.now().toString());
         txtGhiChu.setText("");
         txtNgayTheoDoi.setText("");
     }

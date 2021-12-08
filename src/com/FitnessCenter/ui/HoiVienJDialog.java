@@ -140,6 +140,32 @@ public class HoiVienJDialog extends javax.swing.JDialog {
         }
 
     }
+    public boolean validateForm(boolean chk){
+        DichVu dichvu = (DichVu) cboDichVu.getSelectedItem();
+        List<HoiVien> list = hvdao.selectByDichVu(dichvu.getMaDV());
+        int row = tblKhachHang.getSelectedRow();
+        String makh = (String) tblKhachHang.getValueAt(row,0);
+        /*Check Khách hàng đã đăng ký hội viên*/
+        if (chk) {
+            for (HoiVien cd : list) {
+                if (makh.equals(cd.getMaKH())) {
+                    MsgBox.alert(this, "Khách hàng đã là hội viên");                    
+                    return false;
+                }
+            }
+        }
+        /*Check Khách hàng đã mua dịch vụ*/
+        List<KhachHang> list2 = khdao.selectNotInCourse(dichvu.getMaDV());
+        if(chk){
+            for (KhachHang kh : list2) {
+                if (makh.equals(kh.getMaKH())) {
+                    MsgBox.alert(this, "Khách hàng chưa mua dịch vụ");                    
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -384,16 +410,20 @@ public class HoiVienJDialog extends javax.swing.JDialog {
 
     private void btnThemHoiVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemHoiVienActionPerformed
         // TODO add your handling code here:
-        addHoivien();
+        if(validateForm(true)){
+            addHoivien(); 
+        }
+       
     }//GEN-LAST:event_btnThemHoiVienActionPerformed
 
     private void btnTheoDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTheoDoiActionPerformed
-        // TODO add your handling code here:     
+        // TODO add your handling code here:    
+       
         try {
             index = tblHoiVien.getSelectedRow();
-            int a = (Integer) tblHoiVien.getValueAt(index, 0);
-            new TheoDoiJDialog(a).setVisible(true);
+            int a = (Integer) tblHoiVien.getValueAt(index, 0);           
             this.dispose();
+            new TheoDoiJDialog(a).setVisible(true);
 
         } catch (Exception e) {
             e.printStackTrace();
