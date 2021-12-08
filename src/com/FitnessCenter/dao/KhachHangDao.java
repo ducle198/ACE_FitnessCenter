@@ -26,7 +26,7 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
     @Override
     public void insert(KhachHang entity) {
        XJdbc.update(INSERT_SQL, 
-                entity.getTenKH(), entity.isGioiTinh(), entity.getIdCard(),
+                entity.getMaKH(),entity.getTenKH(), entity.isGioiTinh(), entity.getIdCard(),
                 new java.sql.Date(entity.getNgaySinh().getTime()), 
                 entity.getDiaChi(),entity.getSdt(), entity.getEmail(),entity.getHinhAnh(), entity.getGhiChu());
     }

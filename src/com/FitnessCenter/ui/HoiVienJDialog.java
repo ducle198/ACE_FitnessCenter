@@ -404,9 +404,10 @@ public class HoiVienJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:     
         try {
             index = tblHoiVien.getSelectedRow();
-            int a = (Integer) tblHoiVien.getValueAt(index, 0);
-            new TheoDoiJDialog(a).setVisible(true);
+            int a = (Integer) tblHoiVien.getValueAt(index, 1);
             this.dispose();
+            new TheoDoiJDialog(a).setVisible(true);
+            
 
         } catch (Exception e) {
             e.printStackTrace();

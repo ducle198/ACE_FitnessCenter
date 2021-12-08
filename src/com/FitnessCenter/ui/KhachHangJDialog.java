@@ -111,7 +111,7 @@ public class KhachHangJDialog extends javax.swing.JDialog {
         KhachHang nh = dao.selectByID(makh);
         if (nh != null) {
             this.setForm(nh);
-            tabs.setSelectedIndex(0);
+            tabs.setSelectedIndex(1);
             this.updateStatus();
 
         }  
@@ -234,11 +234,13 @@ public class KhachHangJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Không được phép để trống CMND!");
             txtIDCard.requestFocus();
             return false;
-        }else if (txtIDCard.getText().length() > 10 && txtIDCard.getText().length() < 13) {
-            MsgBox.alert(this, "Số CNMD gồm 12 kí tự!");
-            txtIDCard.requestFocus();
-            return false;
-        }else if (txtNgaySinh.getText().length() == 0) {
+        }
+//        else if (txtIDCard.getText().length() > 10 && txtIDCard.getText().length() < 13) {
+//            MsgBox.alert(this, "Số CNMD gồm 12 kí tự!");
+//            txtIDCard.requestFocus();
+//            return false;
+//        }
+        else if (txtNgaySinh.getText().length() == 0) {
             MsgBox.alert(this, "Không được phép để trống ngày sinh!");
             txtNgaySinh.requestFocus();
             return false;
@@ -743,7 +745,7 @@ public class KhachHangJDialog extends javax.swing.JDialog {
             this.row = tblKhachHang.rowAtPoint(evt.getPoint());
             if (this.row >= 0) {
                 this.edit();
-                tabs.setSelectedIndex(0);
+                tabs.setSelectedIndex(1);
             }
         }
     }//GEN-LAST:event_tblKhachHangMouseClicked

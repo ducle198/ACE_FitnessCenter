@@ -321,9 +321,10 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lbltrolaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrolaiMouseClicked
-     
+       this.dispose();
       HoiVienJDialog formHV = new HoiVienJDialog(this, true);
-         this.dispose();
+      formHV.setVisible(true);
+         
    
     }//GEN-LAST:event_lbltrolaiMouseClicked
 
@@ -411,6 +412,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
         txtSodovong1.setText("");
         txtSodovong2.setText("");
         txtSodovong3.setText("");
+        txtCanNang.setText("");
         txtGhiChu.setText("");
         txtNgayTheoDoi.setText("");
     }
@@ -459,6 +461,7 @@ public class TheoDoiJDialog extends javax.swing.JFrame {
     }
 
     private void load(int Mahv) {
+        lblMaHv.setText(String.valueOf(Mahv));
         DefaultTableModel model = (DefaultTableModel) tblTheoDoi.getModel();
         model.setRowCount(0);
         try {
