@@ -107,7 +107,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
         this.updateStatus();
 //        lblThanhTien.setToolTipText("");
 //        lblTraLai.setText("");
-//        lblCanTra.setText("");
+        lblCanTra.setText("");
         
    }
    void editFormHD(){
@@ -800,13 +800,32 @@ public class HoaDonJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_tblCTHoaDonMouseClicked
 
     private void btnTaoMoiHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiHoaDonActionPerformed
-        // TODO add your handling code here:       
+        // TODO add your handling code here:    
+        if (txtMaHD.getText().length() == 0) {
+            MsgBox.alert(this, "Không được phép để trống mã hóa đơn!");
+            clearFormHD();
+            TaoMoiHD();
+            return;
+        } else if (txtMaKH.getText().length() ==0) {
+            MsgBox.alert(this, "Mã khách hàng không được để trống!");
+            txtMaKH.requestFocus();
+            return ;
+        }else if (txtMaNV.getText().length() ==0) {
+            MsgBox.alert(this, "Mã nhân không được để trống!");
+            txtMaNV.requestFocus();
+            return ;
+        } 
         insertHD();
         
     }//GEN-LAST:event_btnTaoMoiHoaDonActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
+        
+        if(tblCTHoaDon.getRowCount() == 0){
+           MsgBox.alert(this, "Bạn chưa chọn dịch vụ nào!");
+           return;
+        }
         updateHD();
     }//GEN-LAST:event_btnLuuActionPerformed
 
@@ -994,6 +1013,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
      boolean edit = (this.row >= 0);
        txtMaKH.setEditable(!edit);
         btnTaoMoiHoaDon.setEnabled(!edit);
+        
                   
     }
 
