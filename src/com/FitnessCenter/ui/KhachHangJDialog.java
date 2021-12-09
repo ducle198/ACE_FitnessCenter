@@ -338,8 +338,14 @@ public class KhachHangJDialog extends javax.swing.JDialog {
         setTitle("ACE - Quản lý khách hàng");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("QUẢN LÝ KHÁCH HÀNG");
 
+        tabs.setBackground(new java.awt.Color(0, 204, 204));
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
@@ -422,6 +428,8 @@ public class KhachHangJDialog extends javax.swing.JDialog {
         );
 
         tabs.addTab("Danh sách khách hàng", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
         lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinhAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/User.png"))); // NOI18N
