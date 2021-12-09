@@ -324,7 +324,12 @@ public class HoaDonJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
         jLabel2.setText("QUẢN LÝ HÓA ĐƠN");
+
+        tabs.setBackground(new java.awt.Color(0, 204, 204));
+
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         btnTimKiem.setText("Tìm kiếm");
@@ -386,6 +391,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
 
         tabs.addTab("Danh sách hóa đơn", jPanel1);
 
+        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblCTHoaDon.setModel(new javax.swing.table.DefaultTableModel(
@@ -431,6 +437,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jPanel5.setBackground(new java.awt.Color(0, 204, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setText("Mã hóa đơn:");
@@ -593,6 +600,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        lblThanhTien.setBackground(new java.awt.Color(0, 204, 204));
         lblThanhTien.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel12.setText("Mã dịch vụ:");
@@ -766,16 +774,16 @@ public class HoaDonJDialog extends javax.swing.JDialog {
                 .addComponent(tabs)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(478, 478, 478)
+                .addGap(307, 307, 307)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tabs)
                 .addGap(22, 22, 22))
         );

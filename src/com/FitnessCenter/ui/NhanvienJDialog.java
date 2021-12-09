@@ -442,6 +442,8 @@ public class NhanvienJDialog extends javax.swing.JDialog {
         setTitle("Quản Lý Nhân Viên");
         setUndecorated(true);
 
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -499,6 +501,8 @@ public class NhanvienJDialog extends javax.swing.JDialog {
         );
 
         jTabbedPane1.addTab("Danh sách", jPanel2);
+
+        tabs.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel2.setText("ID :");
 
@@ -638,28 +642,23 @@ public class NhanvienJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel10)
                             .addComponent(jLabel6)))
                     .addGroup(tabsLayout.createSequentialGroup()
-                        .addGroup(tabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabsLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdoNghi, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabsLayout.createSequentialGroup()
-                                .addComponent(btnThem)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSua)))
-                        .addGroup(tabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabsLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLamMoi))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabsLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoHoatDong)
-                                .addGap(182, 182, 182)))))
+                        .addComponent(btnThem)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSua)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLamMoi))
+                    .addGroup(tabsLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rdoNghi, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdoHoatDong)))
+                .addGap(55, 55, 55)
                 .addGroup(tabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(tabsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addComponent(btnFirst)
                         .addGap(32, 32, 32)
                         .addComponent(btnPrev)

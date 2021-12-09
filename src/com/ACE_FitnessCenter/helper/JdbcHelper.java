@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class JdbcHelper {
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=ACE_FitnessCenter2";
-    private static String username = "admin";
+    private static String username = "sa";
     private static String password = "123";
 
     ;
