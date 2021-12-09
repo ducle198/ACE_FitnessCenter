@@ -183,8 +183,10 @@ public class HoiVienJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setText("QUẢN LÝ HỘI VIÊN");
 
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dịch vụ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
         cboDichVu.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +209,9 @@ public class HoiVienJDialog extends javax.swing.JDialog {
             .addComponent(cboDichVu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+
+        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
@@ -291,6 +296,9 @@ public class HoiVienJDialog extends javax.swing.JDialog {
 
         tabs.addTab("Danh sách khách hàng", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+
+        tblHoiVien.setBackground(new java.awt.Color(0, 204, 204));
         tblHoiVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
