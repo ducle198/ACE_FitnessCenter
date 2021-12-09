@@ -301,6 +301,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
         btnLamMoi = new javax.swing.JButton();
         txtMaNV = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         lblThanhTien = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -469,6 +470,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
 
         lblTraLai.setText("0");
 
+        lblCanTra.setForeground(new java.awt.Color(255, 0, 51));
         lblCanTra.setText("0");
 
         btnTaoMoiHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Add.png"))); // NOI18N
@@ -496,6 +498,9 @@ public class HoaDonJDialog extends javax.swing.JDialog {
         });
 
         jLabel1.setText("Mã nhân viên:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("HÓA ĐƠN");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -544,11 +549,17 @@ public class HoaDonJDialog extends javax.swing.JDialog {
                         .addGap(35, 35, 35)
                         .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -590,7 +601,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
                     .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLuu)
                     .addComponent(btnTaoMoiHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         lblThanhTien.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -877,6 +888,11 @@ public class HoaDonJDialog extends javax.swing.JDialog {
 
     private void btnThemCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTHDActionPerformed
         // TODO add your handling code here:
+        if(txtSoLuong.getText().length() ==0){
+            MsgBox.alert(this, "Không được phép để trống số lượng!");
+            txtSoLuong.requestFocus();
+            return ;
+        }
         insertCTHoaDon();
     }//GEN-LAST:event_btnThemCTHDActionPerformed
 
@@ -975,6 +991,7 @@ public class HoaDonJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
