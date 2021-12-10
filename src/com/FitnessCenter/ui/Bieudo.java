@@ -26,7 +26,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Bieudo extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bieudo
+     * @author Mycomputer
      */
     public Bieudo() {
         initComponents();

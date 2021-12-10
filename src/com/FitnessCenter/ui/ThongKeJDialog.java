@@ -20,7 +20,7 @@ public class ThongKeJDialog extends javax.swing.JFrame {
     ThongKeDao sv = new ThongKeDao();
 
     /**
-     * Creates new form ThongKeJDialog
+    * @author Mycomputer
      */
     public ThongKeJDialog() {
         initComponents();
