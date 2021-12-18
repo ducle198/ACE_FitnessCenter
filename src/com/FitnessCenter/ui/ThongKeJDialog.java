@@ -198,33 +198,17 @@ public class ThongKeJDialog extends javax.swing.JFrame {
 
         if (cboDate.getSelectedIndex() == 0) {
             filldoanhthu_ngay_label("Hôm Nay");
-            //            fillsosanh_Ngay_label("Hôm Qua");
-            //            filltongspban_ngay_label("Hôm Nay");
-            //            ////            long a=Integer.valueOf(lblDoanhthu.getText());
-            //            ////            long b=Integer.valueOf(lblsosanhso.getText());
-            //            ////            float c=((b-a)/b);
-            //            //            lblDoanhthu2.setText(c+" %");
-
+           
             filltotablengay_ngay();
         }
         if (cboDate.getSelectedIndex() == 1) {
             filldoanhthu_thang_label("Tháng Này");
-            //            fillsosanh_Thang_label("Tháng Trước");
-            //            filltongspban_thang_label("Tháng Này");
-            //            //             int a=Integer.valueOf(lblDoanhthu.getText());
-            //            //            int b=Integer.valueOf(lblsosanhso.getText());
-            //            //            float c=((b-a)/b);
-            //            //            lblDoanhthu2.setText(c+" %");
+            
             filltotablethang();
         }
         if (cboDate.getSelectedIndex() == 2) {
             filldoanhthu_nam_label("Năm Nay");
-            //            fillsosanh_nam_label("Năm Trước");
-            //            filltongspban_nam_label("Năm Nay");
-            //            //             int a=Integer.valueOf(lblDoanhthu.getText());
-            //            //            int b=Integer.valueOf(lblsosanhso.getText());
-            //            //            float c=((b-a)/b);
-            //            //            lblDoanhthu2.setText(c+" %");
+         
             filltotablenam();
 
         }
