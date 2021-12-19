@@ -80,6 +80,14 @@ public class HoaDonDao extends ACE_FitnessCenterDao<HoaDon, String>{
         String sql = "SELECT * FROM HOADON WHERE MAHD LIKE ?";
         return this.selectBySQL(sql, "%" + keyword + "%");
     }
+    public List<HoaDon> selectByKH(String keyword){
+        String sql = "SELECT *FROM HOADON WHERE MAHD IN (SELECT HOADON.MAHD FROM HOADON JOIN KHACHHANG ON HOADON.MAKH = KHACHHANG.MAKH WHERE TENKH LIKE ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%");
+    }
+    public List<HoaDon> selectByNV(String keyword){
+        String sql = "SELECT *FROM HOADON WHERE MAHD IN (SELECT HOADON.MAHD FROM HOADON JOIN NHANVIEN ON HOADON.MANV = NHANVIEN.MANV WHERE TENNV LIKE ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%");
+    }
     public static ResultSet CountSoHoaDon(String SoHoaDon) throws SQLException {
         String cauTruyVan = "select Count(*) from hoadon where MAHD like N'%" + SoHoaDon + "%'";
         return XJdbc.query(cauTruyVan);
