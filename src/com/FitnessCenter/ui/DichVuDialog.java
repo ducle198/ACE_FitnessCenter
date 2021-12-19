@@ -451,6 +451,7 @@ public class DichVuDialog extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.load();
         setVisible(true);
+         tabs.setSelectedIndex(1);
 
     }//GEN-LAST:event_formWindowOpened
 
