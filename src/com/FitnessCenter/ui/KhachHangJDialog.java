@@ -335,7 +335,7 @@ public class KhachHangJDialog extends javax.swing.JDialog {
         btnHinhanh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ACE - Quản lý khách hàng");
+        setTitle("ACE_FitnessCenter - Quản lý khách hàng");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));

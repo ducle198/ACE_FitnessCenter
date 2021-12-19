@@ -13,6 +13,7 @@ import com.FitnessCenter.entity.HoiVien;
 import com.FitnessCenter.entity.KhachHang;
 import com.FitnessCenter.utils.MsgBox;
 import com.FitnessCenter.utils.XDate;
+import com.FitnessCenter.utils.XMoney;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -61,7 +62,7 @@ public class HoiVienJDialog extends javax.swing.JDialog {
             for (int i = 0; i < list.size(); i++) {
                 HoiVien hv = list.get(i);
                 String hoten = khdao.selectByID(hv.getMaKH()).getTenKH();
-                model.addRow(new Object[]{i + 1, hv.getMaHV(), hv.getMaKH(), hoten,hv.getNgayBatDauVao(),hv.isTrangThai() ? "Hoạt động" : "Tạm dừng"});
+                model.addRow(new Object[]{i + 1, hv.getMaHV(), hv.getMaKH(), hoten,XDate.toString(hv.getNgayBatDauVao()),hv.isTrangThai() ? "Hoạt động" : "Tạm dừng"});
             }
             fillTableKhachHang();
         } 
@@ -124,15 +125,17 @@ public class HoiVienJDialog extends javax.swing.JDialog {
             for (int i = 0; i < tblHoiVien.getRowCount(); i++) {
                 int mahv = (Integer) tblHoiVien.getValueAt(i, 1);
                 String makh = (String) tblHoiVien.getValueAt(i, 2);
+                String ngaybd = tblHoiVien.getValueAt(i, 4).toString();
                 boolean trangthai = tblHoiVien.getValueAt(i, 4).toString().equals("Hoạt động") ? true :false;
                 HoiVien hv = hvdao.findById(mahv);
                 hv.setMaHV(mahv);
                 hv.setMadv(dichvu.getMaDV());
                 hv.setMaKH(makh);
+                hv.setNgayBatDauVao(XDate.toDate(ngaybd));
                 hv.setTrangThai(trangthai);               
-//                hvdao.Update(hv);
+                hvdao.Update(hv);
             }
-//            fillTableHocVien();
+            fillTableHoiVien();
             MsgBox.alert(this, "Cập nhật trạng thái thành công!");
         } catch (Exception e) {
             MsgBox.alert(this, "Cập nhật trạng thái thất bại!");

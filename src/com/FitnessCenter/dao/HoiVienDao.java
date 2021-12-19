@@ -30,10 +30,11 @@ public class HoiVienDao {
     }
 
     public void Update(HoiVien hoivien) {
-        String sql = "UPDATE HoiVien SET MaDv=?, MaKh=? trangthai=?  WHERE MaHV=?";
+        String sql = "UPDATE HoiVien SET MaDv=?, MaKh=?,NGAYBATDAUVAO = ?, trangthai=?  WHERE MaHV=?";
         JdbcHelper.executeUpdate(sql,
                 hoivien.getMadv(),
                 hoivien.getMaKH(),
+                hoivien.getNgayBatDauVao(),
                 hoivien.isTrangThai(),
                 hoivien.getMaHV()
         );
