@@ -108,4 +108,11 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
         }
         return list.get(0); //To change body of generated methods, choose Tools | Templates.
     }
+    public List<KhachHang> selectNotInCourse(String keyword){
+        String sql = "SELECT *FROM KHACHHANG WHERE MAKH NOT IN(SELECT  KHACHHANG.MAKH FROM KHACHHANG  \n" +
+                    "JOIN HOADON ON KHACHHANG.MAKH = HOADON.MAKH\n" +
+                    "JOIN CTHOADON ON   HOADON.MAHD = CTHOADON.MAHD\n" +
+                    "WHERE CTHOADON.MADV LIKE ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%");
+    }
 }
