@@ -13,6 +13,7 @@ import com.FitnessCenter.entity.HoiVien;
 import com.FitnessCenter.entity.KhachHang;
 import com.FitnessCenter.utils.MsgBox;
 import com.FitnessCenter.utils.XDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -57,10 +58,9 @@ public class HoiVienJDialog extends javax.swing.JDialog {
         DichVu dichvu = (DichVu) cboDichVu.getSelectedItem();        
         if (dichvu != null) {
             List<HoiVien> list = hvdao.selectByDichVu(dichvu.getMaDV());
-            System.out.println(list.size());
             for (int i = 0; i < list.size(); i++) {
                 HoiVien hv = list.get(i);
-                String hoten = khdao.selectByID(hv.getMaKH()).getTenKH();
+                String hoten = khdao.selectByID(hv.getMaKH()).getTenKH();                
                 model.addRow(new Object[]{i + 1, hv.getMaHV(), hv.getMaKH(), hoten,hv.getNgayBatDauVao(),hv.isTrangThai() ? "Hoạt động" : "Tạm dừng"});
             }
             fillTableKhachHang();
@@ -130,29 +130,41 @@ public class HoiVienJDialog extends javax.swing.JDialog {
                 hv.setMadv(dichvu.getMaDV());
                 hv.setMaKH(makh);
                 hv.setTrangThai(trangthai);               
-//                hvdao.Update(hv);
+                hvdao.Update(hv);
             }
-//            fillTableHocVien();
+            fillTableHoiVien();
             MsgBox.alert(this, "Cập nhật trạng thái thành công!");
         } catch (Exception e) {
             MsgBox.alert(this, "Cập nhật trạng thái thất bại!");
-            e.printStackTrace();
         }
 
     }
-//    public boolean validateForm(boolean chk){
-//        String keyword = cboDichVu.getSelectedItem().toString();
-//        int row = tblKhachHang.getSelectedRow();
-//        String makH = (String) tblKhachHang.getValueAt(row, 0);
-//        List<HoiVien> list = hvdao.selectByDichVu(keyword);
-//        if (chk) {
-//            for (HoiVien cd : list) {
-//                if (makH.equals(cd.getMaKH())) {
-//                    MsgBox.alert(this, "Khách hàng đã đăng ký hội viên");
-//                    return false;
-//                }
-//            }
-//    }
+    public boolean validateForm(boolean chk){
+        DichVu dichvu = (DichVu) cboDichVu.getSelectedItem();
+        List<HoiVien> list = hvdao.selectByDichVu(dichvu.getMaDV());
+        int row = tblKhachHang.getSelectedRow();
+        String makh = (String) tblKhachHang.getValueAt(row,0);
+        /*Check Khách hàng đã đăng ký hội viên*/
+        if (chk) {
+            for (HoiVien cd : list) {
+                if (makh.equals(cd.getMaKH())) {
+                    MsgBox.alert(this, "Khách hàng đã là hội viên");                    
+                    return false;
+                }
+            }
+        }
+        /*Check Khách hàng đã mua dịch vụ*/
+        List<KhachHang> list2 = khdao.selectNotInCourse(dichvu.getMaDV());
+        if(chk){
+            for (KhachHang kh : list2) {
+                if (makh.equals(kh.getMaKH())) {
+                    MsgBox.alert(this, "Khách hàng chưa mua dịch vụ");                    
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -238,10 +250,7 @@ public class HoiVienJDialog extends javax.swing.JDialog {
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã khách hàng", "Họ tên khách hàng", "Giới tính", "Ngày sinh", "SDT", "Email", "Ghi chú"
@@ -288,8 +297,8 @@ public class HoiVienJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(btnThemHoiVien)
                 .addGap(25, 25, 25))
         );
@@ -405,7 +414,9 @@ public class HoiVienJDialog extends javax.swing.JDialog {
 
     private void btnThemHoiVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemHoiVienActionPerformed
         // TODO add your handling code here:
+        if(validateForm(true)){
         addHoivien();
+        }
     }//GEN-LAST:event_btnThemHoiVienActionPerformed
 
     private void btnTheoDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTheoDoiActionPerformed
