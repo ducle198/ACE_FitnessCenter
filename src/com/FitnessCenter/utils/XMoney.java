@@ -16,14 +16,14 @@ import java.util.Date;
  * @author ADMIN
  */
 public class XMoney {
-   public static String DinhDangTien(double tien) {
+   public static String DinhDangTien(float tien) {
         return NumberFormat.getNumberInstance().format(tien);
     }
 
     //Hàm chuyển từ chữ sang số để tính toán
-    public static double ChuyenTien(String tien) {
+    public static float ChuyenTien(String tien) {
         try {
-            return NumberFormat.getNumberInstance().parse(tien).doubleValue();
+            return NumberFormat.getNumberInstance().parse(tien).floatValue();
         } catch (ParseException ex) {
 //            GUI.frmHeThong.ThongBao("Thông báo", "Lỗi chuyển dữ liệu");
 

@@ -90,11 +90,24 @@ public class KhachHangDao extends ACE_FitnessCenterDao<KhachHang, String>{
         String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ?";
         return this.selectBySQL(sql, "%" + keyword + "%");
     }
-
-    public List<KhachHang> selectNotInCourse(int makh, String keyword){
-        String sql = "SELECT * FROM KHACHHANG WHERE MAKH LIKE ? AND "
-                + "MAKH NOT IN (SELECT HOIVIEN FROM HOIVien WHERE MaKH = ?)";
-        return this.selectBySQL(sql, "%" + keyword + "%", makh);
+    public List<KhachHang> selectByTenKH(String keyword){
+        String sql = "SELECT * FROM KHACHHANG WHERE TENKH LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%");
     }
-    
+
+    public List<KhachHang> selectNotInCourse(String keyword){
+        String sql = "SELECT *FROM KHACHHANG WHERE MAKH NOT IN(SELECT  KHACHHANG.MAKH FROM KHACHHANG  \n" +
+                    "JOIN HOADON ON KHACHHANG.MAKH = HOADON.MAKH\n" +
+                    "JOIN CTHOADON ON   HOADON.MAHD = CTHOADON.MAHD\n" +
+                    "WHERE CTHOADON.MADV LIKE ?)";
+        return this.selectBySQL(sql, "%" + keyword + "%");
+    }
+    public KhachHang selectByName(String id) {
+        String sql = "SELECT * FROM KHACHHANG WHERE TENKH LIKE ?";
+        List<KhachHang> list = this.selectBySQL(sql, id);
+        if(list.isEmpty()){
+            return null;
+        }
+        return list.get(0); //To change body of generated methods, choose Tools | Templates.
+    }
 }

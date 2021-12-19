@@ -319,6 +319,12 @@ public class NhanvienJDialog extends javax.swing.JDialog {
             txtNgaySinh.requestFocus();
             return false;
         }
+        if (txtChucVu.getText().length() == 0) {
+            MsgBox.alert(this, "Không được phép để trống chức vụ !");
+            txtChucVu.setText("");
+            txtChucVu.requestFocus();
+            return false;
+        }
 
         //check ngày
         try {
